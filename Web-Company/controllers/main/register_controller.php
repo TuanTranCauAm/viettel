@@ -16,16 +16,18 @@ class RegisterController extends BaseController
 
 	public function submit()
 	{
+		$phone = $_POST['phone'];
+		$password = $_POST['password'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
-		$age = $_POST['age'];
+		$day = $_POST['day'];
+		$month = $_POST['month'];
+		$year = $_POST['year'];
 		$gender = $_POST['gender'];
-		$phone = $_POST['phone'];
-		$email = $_POST['email'];
-		$password = $_POST['pass'];
-		echo $fname . $lname . $age . $gender . $phone . $email . $password;
-		User::insert($email, 'public/img/user/default.png', $fname, $lname, $gender, $age, $phone, $password);
-		header('Location: index.php?page=main&controller=layouts&action=index');
+		echo $phone . $password . $fname . $lname . $day . $month . $year . $gender;
+		$req = User::insert($phone, 'public/img/user/default.png', $password, $fname, $lname, $day, $month, $year, $gender);
+		if($req){header('Location: index.php?page=main&controller=login&action=index');}
+		else{header('Location: index.php?page=main&controller=register&action=index&flag=false');}
 	}
 
 	public function editInfo()
@@ -89,3 +91,4 @@ class RegisterController extends BaseController
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 }
+?>

@@ -2,16 +2,17 @@
 require_once('connection.php');
 class User
 {
-    public $email;
+    public $phone;
+    public $password;
     public $profile_photo;
     public $fname;
     public $lname;
+    public $day;
+    public $month;
+    public $year;
     public $gender;
-    public $age;
-    public $phone;
     public $createAt;
     public $updateAt;
-    public $password;
 
     public function __construct($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $createAt, $updateAt, $password)
     {
@@ -78,15 +79,18 @@ class User
         return $user;
     }
 
-    static function insert($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $password)
+    static function insert($phone, $profile_photo, $password, $fname, $lname, $day, $month, $year, $gender)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query(
             "
-            INSERT INTO user (email, profile_photo, fname, lname, gender, age, phone, createAt, updateAt, password)
-            VALUES ('$email', '$profile_photo', '$fname', '$lname', $gender, $age, '$phone', NOW(), NOW(), '$password')
-            ;");
+            INSERT INTO user (phone, profile_photo, password, fname, lname, day, month, year, gender, createAt, updateAt)
+            VALUES ('$phone', '$profile_photo', '$password','$fname', '$lname', '$day', '$month', '$year', '$gender', NOW(), NOW());
+            -- INSERT INTO `USER` (phone, password, fname, lname, day, month, year, gender)
+            -- VALUES ('$phone', '$password', '$fname', 'TUAN', 1, 1, 1, 'Nam');
+            ");
+
         return $req;
     }
 

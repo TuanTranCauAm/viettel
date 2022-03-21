@@ -4,51 +4,30 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-	<title>VNGREEN - Build technology and grow people</title>
+	<title>VIETTEL</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
   
-	<!-- Favicons -->
+	<!-- ICON WEB -->
 	<link href="public/uploads/favicon.png" rel="icon">
-  
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
-	<!-- Vendor CSS Files -->
-	<link href="public/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-	<link href="public/assets/vendor/aos/aos.css" rel="stylesheet">
+	<!-- CSS -->
 	<link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-	<link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-	<link href="public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-	<link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-	<link href="public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  
-	<link href="public/assets/css/style.css" rel="stylesheet">
 	<link href="public/assets/css/main.css" rel="stylesheet">
-	<link href="public/assets/css/util.css" rel="stylesheet">
 </head>
-<body style="background-color: #666666;">	
-	<div class="limiter">
-		<div class="container-login100">
+	<body>	
+		<div>
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title p-b-20">
 						<strong>ĐĂNG NHẬP</strong>
-					</span>
-					
-					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
+					</span><br>
+
+					<div class="validate-input">
+						<input type="text" class="form-control" name="phone" placeholder="Số điện thoại"><br>
 					</div>
-					
-					
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Password</span>
+				
+					<div class="validate-input" data-validate="Password is required">
+						<input type="password" class="form-control" name="password" placeholder="Mật khẩu"><br>
 					</div>
 					<?php
 
@@ -58,27 +37,27 @@
 						unset($err);
 					}
 					?>
-					<div class="flex-sb-m w-full p-t-3 p-b-32">
-
-						<div>
-							<a href="index.php?page=main&controller=layouts&action=index" class="txt1">
-								Trở về trang chủ!
-							</a>
-						</div>
-					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" name="submit-btn">
 							Đăng nhập
 						</button>
+					</div><br>
+
+					<div>
+						<a href="index.php?page=main&controller=register&action=index&flag=true" class="btn btn-success">
+							Đăng ký
+						</a>
+						<a href="index.php?page=main&controller=layouts&action=index" class="btn btn-warning">
+							Trang chủ
+						</a>
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('public/assets/img/slide/VNG\ Campus\ 31.jpg');">
+				<div class="login100-more" style="background-image: url('public/img/layouts/register.png');">
 				</div>
 			</div>
 		</div>
-	</div>
 	
 	
 

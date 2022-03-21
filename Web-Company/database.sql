@@ -24,17 +24,18 @@ CREATE TABLE `NEWS` (
 ) ;
 
 CREATE TABLE `USER` (
-  `email` varchar(255) ,
+  `phone` varchar(10) DEFAULT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
+  `day` varchar(10) DEFAULT NULL,
+  `month` varchar(10) DEFAULT NULL,
+  `year` varchar(10) DEFAULT NULL,
   `gender` boolean DEFAULT NULL,
-  `age` int default null,
-  `phone` varchar(10) DEFAULT NULL,
   `createAt` datetime DEFAULT NULL,
   `updateAt` datetime DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  primary key (email)
+  primary key (phone)
 ) ;
 
 CREATE TABLE `COMMENT` (
@@ -47,7 +48,7 @@ CREATE TABLE `COMMENT` (
   `parent` int DEFAULT NULL,
   primary key (id),
   foreign key(news_id) references NEWS(id) ON DELETE CASCADE ON UPDATE CASCADE,
-  foreign key(user_id) references USER(email) ON DELETE CASCADE ON UPDATE CASCADE
+  foreign key(user_id) references USER(phone) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ALTER TABLE `COMMENT`
@@ -75,10 +76,12 @@ CREATE TABLE `COMPANY` (
 INSERT INTO `ADMIN` (username, password) VALUES ('admin', '');
 INSERT INTO `ADMIN` (username, password) VALUES ('username', '');
 
-INSERT INTO `USER` (email, fname, lname, gender, age, phone, password)
-VALUES ('admin@hcmut.edu.vn', 'Nguyen Van', 'A', 1, 15, '0123456789', '');
-INSERT INTO `USER` (email, fname, lname, gender, age, phone, password)
-VALUES ('user@hcmut.edu.vn', 'Nguyen Van', 'B', 0, 30, '0123456789', '');
+INSERT INTO `USER` (phone, password, fname, lname, day, month, year, gender)
+VALUES ('123456789', '123456789', 'TRAN TRUNG', 'TUAN', 1, 1, 1, 'Nam');
+
+-- INSERT INTO `USER` (email, fname, lname, gender, age, phone, password)
+-- VALUES ('user@hcmut.edu.vn', 'Nguyen Van', 'B', 0, 30, '0123456789', '');
+
 
 INSERT INTO `PRODUCT` (name, price, description, content)
 VALUES ('Chè thập cẩm', 25000, 'Chè rất ngon', 'Đây là một món chè tươi ngon bổ dưỡng');
@@ -103,12 +106,12 @@ Hướng dẫn lần này quy định rõ hơn về đối tượng được ch�
 Ngoài ra quy định này chỉ cho phép một số trường hợp không thỏa các điều kiện nêu trên có thể xem xét cách ly ở nhà nếu có bệnh nền ổn định, bảo đảm tiêm đủ 2 mũi vắc xin hoặc sau 14 ngày kể từ ngày tiêm mũi đầu tiên.
 TP Thủ Đức (TP.HCM) là một trong các địa phương được ghi nhận có số ca mắc tăng nhanh gần đây. Ông Nguyễn Văn Chức - giám đốc Trung tâm Y tế TP Thủ Đức - cho biết để "đánh chặn từ xa", ngoài 32 trạm y tế cố định, các trạm y tế lưu động, các phường triển khai tổ y tế lưu động đến từng khu phố (trước đây là phường) để kịp thời xử lý các ca F0 chuyển nặng. "Tổ lưu động của từng khu phố khá đông, bao gồm đủ các ban ngành từ y tế, đoàn thanh niên, dân quân, giáo dục, thành ra việc phản ứng và tiếp cận sẽ được gần người dân hơn" - ông Chức nói.');
 
-INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
-VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
-INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
-VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
-INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
-VALUES (2, 'user@hcmut.edu.vn', '2021-12-12', 0, 'Không thể tin được');
+-- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+-- VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
+-- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+-- VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
+-- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+-- VALUES (2, 'user@hcmut.edu.vn', '2021-12-12', 0, 'Không thể tin được');
 
 INSERT INTO `COMPANY` (name, address)
 VALUES ('Chi nhánh TPHCM', '268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM');
