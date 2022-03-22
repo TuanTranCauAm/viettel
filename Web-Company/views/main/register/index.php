@@ -17,7 +17,7 @@
 	<div>
 		<div class="wrap-login100">
 			<form action="index.php?page=main&controller=register&action=submit" method="POST" class="login100-form validate-form">
-				<span class="login100-form-title"><strong>ĐĂNG KÝ</strong></span>
+				<span class="login100-form-title" style="color:red"><strong>ĐĂNG KÝ</strong></span>
 				<br>	
 				<?php
 					if($_GET['flag'] == 'false'){

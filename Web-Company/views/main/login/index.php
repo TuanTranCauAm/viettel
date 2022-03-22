@@ -18,7 +18,7 @@
 		<div>
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST">
-					<span class="login100-form-title p-b-20">
+					<span class="login100-form-title p-b-20" style="color:red">
 						<strong>ĐĂNG NHẬP</strong>
 					</span><br>
 
@@ -33,7 +33,7 @@
 
 					if (isset($err))
 					{
-						echo '<p class="login-box-msg" style="color: red">' . $err . '</p>';
+						echo '<strong style="color: red">' . $err . '</strong>';
 						unset($err);
 					}
 					?>

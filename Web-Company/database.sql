@@ -32,7 +32,7 @@ CREATE TABLE `USER` (
   `day` varchar(10) DEFAULT NULL,
   `month` varchar(10) DEFAULT NULL,
   `year` varchar(10) DEFAULT NULL,
-  `gender` boolean DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
   `createAt` datetime DEFAULT NULL,
   `updateAt` datetime DEFAULT NULL,
   primary key (phone)

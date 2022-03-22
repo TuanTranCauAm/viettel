@@ -14,20 +14,21 @@ class User
     public $createAt;
     public $updateAt;
 
-    public function __construct($email, $profile_photo, $fname, $lname, $gender, $age, $phone, $createAt, $updateAt, $password)
+    public function __construct($phone, $profile_photo, $fname, $lname, $day, $month, $year, $gender, $createAt, $updateAt, $password)
     {
-        $this->email = $email;
+        $this->phone = $phone;
         $this->profile_photo = $profile_photo;
         $this->fname = $fname;
         $this->lname = $lname;
+        $this->day = $day;
+        $this->month = $month;
+        $this->year = $year;
         $this->gender = $gender;
-        $this->age = $age;
-        $this->phone = $phone;
         $this->createAt = $createAt;
         $this->updateAt = $updateAt;
         $this->password = $password;
     }
-
+    /*
     static function getAll()
     {
         $db = DB::getInstance();
@@ -52,26 +53,27 @@ class User
         }
         return $users;
     }
-
-    static function get($email)
+    */
+    static function get($phone)
     {
         $db = DB::getInstance();
         $req = $db->query(
             "
-            SELECT email, profile_photo, fname, lname, gender, age, phone, createAt, updateAt 
+            SELECT phone, profile_photo, fname, lname, day, month, year, gender, createAt, updateAt
             FROM user
-            WHERE email = '$email'
+            WHERE phone = '$phone'
             ;"
         );
         $result = $req->fetch_assoc();
         $user = new User(
-            $result['email'],
+            $result['phone'],
             $result['profile_photo'],
             $result['fname'],
             $result['lname'],
+            $result['day'],
+            $result['month'],
+            $result['year'],
             $result['gender'],
-            $result['age'],
-            $result['phone'],
             $result['createAt'],
             $result['updateAt'],
             '' // Do not return password
@@ -114,10 +116,10 @@ class User
         return $req;
     }
 
-    static function validation($email, $password)
+    static function validation($phone, $password)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM user WHERE email = '$email'");
+        $req = $db->query("SELECT * FROM user WHERE phone = '$phone'");
         if (@password_verify($password, $req->fetch_assoc()['password']))
             return true;
         else

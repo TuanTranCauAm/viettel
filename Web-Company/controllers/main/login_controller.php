@@ -2,46 +2,37 @@
 require_once('controllers/main/base_controller.php');
 require_once('models/user.php');
 
-class LoginController extends BaseController
-{
-	function __construct()
-	{
+class LoginController extends BaseController{
+	function __construct(){
 		$this->folder = 'login';
 	}
 
-	public function index()
-	{
-		session_start();
-		if (isset($_SESSION["guest"]))
-		{
+	public function index(){
+		session_start();	//Sử dụng để check đăng nhập, khởi tạo khi vào trang đăng nhập
+		if (isset($_SESSION["guest"])){	// Nếu có biến này tới trang chủ
 			header('Location: index.php?page=main&controller=layouts&action=index');
 		}
-		else if (isset($_POST['submit-btn']))
-		{
-			$username = $_POST['username'];
+		else if (isset($_POST['submit-btn'])){ // Nếu thực hiện submit
+			$phone = $_POST['phone'];
 			$password = $_POST['password'];
-			unset($_POST);
-			$check = User::validation($username, $password);
-			if ($check == 1)
-			{
-				$_SESSION["guest"] = $username;
+			unset($_POST);	//Xóa biến
+			$check = User::validation($phone, $password);
+			if ($check == 1){
+				$_SESSION["guest"] = $phone;
 				header('Location: index.php?page=main&controller=layouts&action=index');
 			}
-			else 
-			{
-				$err = "Sai tài khoản hoặc mật khẩu";
+			else{
+				$err = "Tài khoản hoặc mật khẩu không đúng";
 				$data = array('err' => $err);
 				$this->render('index', $data);
 			}
 		}
-		else
-		{
+		else{
 			$this->render('index');
 		}
 	}
 
-	public function logout()
-	{
+	public function logout(){
 		session_start();
 		unset($_SESSION["guest"]);
 		session_destroy();
