@@ -103,14 +103,21 @@ class User
         return $req;
     }
 
-    static function update($email, $profile_photo, $fname, $lname, $gender, $age, $phone)
+    static function update($phone, $profile_photo, $fname, $lname, $day, $month, $year, $gender)
     {
         $db = DB::getInstance();
         $req = $db->query(
             "
             UPDATE user
-            SET profile_photo = '$profile_photo', fname = '$fname', lname = '$lname', gender = $gender, age = $age, phone = '$phone', updateAt = NOW()
-            WHERE email = '$email'
+            SET profile_photo = '$profile_photo',
+                fname = '$fname', 
+                lname = '$lname',
+                day = '$day', 
+                month = '$month', 
+                year = '$year', 
+                gender = '$gender', 
+                updateAt = NOW()
+            WHERE phone = '$phone'
             ;"
         );
         return $req;

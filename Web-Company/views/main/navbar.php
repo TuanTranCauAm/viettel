@@ -70,7 +70,10 @@
               <div class="form-group">
                 <input type="file" name="fileToUpload" id="fileToUpload" />
               </div>
-              
+              <div class="form-group">
+              <input class="form-control" type="text" name="img" value="' . $data->profile_photo . '" hidden/>
+              </div>
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -93,7 +96,7 @@
                   <label style="color:red">Sinh:</label>
                   <div class="col-8 d-flex">
                     <select class="form-control col-6" name="day">
-                        <option selected disabled hidden>' . $data->day . '</option>
+                        <option value="' . $data->day . '" selected hidden>' . $data->day . '</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -127,7 +130,7 @@
                         <option value="31">31</option>
                     </select>
                     <select class="form-control col-6" name="month">
-                        <option selected disabled hidden>' . $data->month . '</option>
+                        <option value="' . $data->month . '" selected hidden>' . $data->month . '</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -142,7 +145,7 @@
                         <option value="12">12</option>
                     </select>
                     <select class="form-control col-6" name="year">
-                        <option selected disabled hidden>' . $data->year . '</option>
+                        <option value="' . $data->year . '" selected hidden>' . $data->year . '</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -269,7 +272,7 @@
                   <div class="form-group">
                     <div class="row"> </div>
                     <label style="color:red">Số điện thoại</label>
-                    <input class="form-control" type="text" name="img" readonly value="' . $data->phone . '" />
+                    <input class="form-control" type="text" readonly value="' . $data->phone . '" />
                   </div>
                 </div>
               </div>
