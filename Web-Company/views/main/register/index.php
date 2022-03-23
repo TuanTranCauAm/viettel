@@ -11,39 +11,39 @@
 	<link href="public/uploads/favicon.png" rel="icon">
 	<!-- CSS -->
 	<link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="public/assets/css/main.css" rel="stylesheet">
+  <link href="public/assets/css/register-login.css" rel="stylesheet">
 </head>
 <body>
 	<div>
-		<div class="wrap-login100">
-			<form action="index.php?page=main&controller=register&action=submit" method="POST" class="login100-form validate-form">
-				<span class="login100-form-title" style="color:red"><strong>ĐĂNG KÝ</strong></span>
+		<div class="register-login">
+			<form action="index.php?page=main&controller=register&action=submit" method="POST" class="login validate-form">
+				<span class="login-title" style="color:red"><strong>ĐĂNG KÝ</strong></span>
 				<br>	
 				<?php
 					if($_GET['flag'] == 'false'){
 						echo "<strong style='color:red'>Số điện thoại đã có người đăng kí</strong>";
 					};
 				?>
-				<div class="validate-input">
-					<input type="text" class="form-control" name="phone" placeholder="Số điện thoại"><br>
+				<div>
+					<input type="text" class="form-control" name="phone" placeholder="Số điện thoại" style="border-color: red"><br>
 				</div>
 				
-				<div class="validate-input" data-validate="Password is required">
-					<input type="password" class="form-control" name="password" placeholder="Mật khẩu"><br>
+				<div data-validate="Password is required">
+					<input type="password" class="form-control" name="password" placeholder="Mật khẩu" style="border-color: red"><br>
 				</div>
 
-				<div class="validate-input" data-validate="Fname is required">
-					<input type="text" class="form-control" name="fname" placeholder="Họ"><br>
+				<div data-validate="Fname is required">
+					<input type="text" class="form-control" name="fname" placeholder="Họ" style="border-color: red"><br>
 				</div>
 
-				<div class="validate-input" data-validate="Lname is required">
-					<input type="text" class="form-control" name="lname" placeholder="Tên"><br>
+				<div data-validate="Lname is required">
+					<input type="text" class="form-control" name="lname" placeholder="Tên" style="border-color: red"><br>
 				</div>
 
 				<div class="form-group row">
                     <label class="col-3 col-form-label">Sinh:</label>
                     <div class="col-3 d-flex">
-                        <select class="form-control col-3" name="day">
+                        <select class="form-control col-3" name="day" style="border-color: red">
                             <option selected disabled hidden>Ngày</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -77,7 +77,7 @@
                             <option value="30">30</option>
                             <option value="31">31</option>
                           </select>
-                          <select class="form-control col-2" name="month">
+                          <select class="form-control col-2" name="month" style="border-color: red">
                             <option selected disabled hidden>Tháng</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -92,7 +92,7 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                           </select>
-                          <select class="form-control col-2" name="year">
+                          <select class="form-control col-2" name="year" style="border-color: red">
                             <option selected disabled hidden>Năm</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
@@ -210,8 +210,8 @@
 				<div>Khi nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch theo</div>
 				<div><a href="#" style="color:red">điều kiện sử dụng và chính sách của Viettel</a></div><br>
 
-				<div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="ĐĂNG KÝ">
+				<div class="container-login-btn">
+					<input class="login-btn" type="submit" value="ĐĂNG KÝ">
 				</div><br>
 
 				<div>
@@ -224,7 +224,7 @@
 				</div>
 			</form>
 
-			<div class="login100-more" style="background-image: url('public/img/layouts/register.png');">
+			<div class="login-image" style="background-image: url('public/img/layouts/register.png');">
 			</div>
 		</div>
 	</div>
