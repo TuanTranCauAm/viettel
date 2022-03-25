@@ -6,13 +6,10 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Trụ sở chính</h3>
+          <a href="index.php?page=main&controller=layouts&action=index"><img src="public/uploads/favicon.png" class="img-fluid logo-footer" alt=""></a>
+          <h6>WEBSITE MUA SẮM ONLINE CHÍNH THỨC CỦA VIETTEL TELECOM.</h6>
             <p>
-              Z06 đường số 13 <br>
-              Phường Tân Thuận Đông, Quận 7<br>
-              TP. Hồ Chí Minh, Việt Nam <br><br>
-              <strong>Điện thoại:</strong> 090 918 34 46<br>
-              <strong>Email:</strong> start@vng.com.vn<br>
+            Cơ quan chủ quản: Tổng Công ty Viễn thông Viettel (Viettel Telecom) - Chi nhánh Tập đoàn Công nghiệp - Viễn thông Quân đội. Mã số doanh nghiệp: 0100109106-011 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 18/07/2005, sửa đổi lần thứ 15 ngày 18/12/2018. Chịu trách nhiệm nội dung: Ông Cao Anh Sơn
             </p>
           </div>
 
@@ -52,15 +49,12 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>VNGREEN</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          Designed by <a href="index.php?page=admin&controller=layouts&action=index">VNGREEN</a>
+          &copy; Copyright <strong><span>Viettel Telecom 2015</span></strong>. All Rights Reserved
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="https://www.facebook.com/VNGCorporation.Page/" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA" class="youtube"><i class="bx bxl-youtube"></i></a>
+        <a href="https://www.facebook.com/Vietteltelecom/" ><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.youtube.com/user/Viettelchannels" ><i class="bx bxl-youtube"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->

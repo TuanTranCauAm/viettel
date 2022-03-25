@@ -293,23 +293,26 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html"><img src="public/uploads/favicon.png" class="img-fluid" alt="">VN<span>GREEN</span></a></h1>
+      <a href="index.php?page=main&controller=layouts&action=index"><img src="public/uploads/favicon.png" class="img-fluid" alt=""></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="public/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar  order-lg-0">
         <ul>
-          <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
-          <li><a href="index.php?page=main&controller=about&action=index">Chúng tôi</a></li>
+          <!-- <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li> -->
+          <li><a href="index.php?page=main&controller=about&action=index">Giới thiệu Viettel</a></li>
           <li><a href="index.php?page=main&controller=services&action=index">Sản phẩm</a></li>
           <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
-          <li><a href="index.php?page=main&controller=archive&action=index">Thành tựu</a></li>
+          <li><a href="index.php?page=main&controller=archive&action=index">Chất lượng dịch vụ</a></li>
           <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
           <?php
           if (!isset($_SESSION["guest"])){
             echo '
-              <li><a href="index.php?page=main&controller=login&action=index&flag=true"><i class="fas fa-user"></i></a></li>
-            ';
+               
+              <li ><a href="index.php?page=main&controller=login&action=index&flag=true "class="button--primary button " >Đăng nhập</a></li>
+              <li ><a href="index.php?page=main&controller=register&action=index&flag=true"class="button button--normal "  >Đăng ký </a></li>
+              
+              ';
           }
           else{
             echo '
@@ -327,10 +330,10 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <div class="header-social-links d-flex">
+      <!-- <div class="header-social-links d-flex">
         <a href="https://www.facebook.com/VNGCorporation.Page/" class="facebook"><i class="bu bi-facebook"></i></a>
         <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA" class="youtube"><i class="bu bi-youtube"></i></a>
-      </div>
+      </div> -->
 
     </div>
   </header><!-- End Header -->

@@ -8,18 +8,19 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url(public/assets/img/slide/VNG_campus.jpg);">
-          <div class="carousel-container">
+        
+        <div class="carousel-item active" style="background-image: url(public/assets/img/home/1.jpg);">
+          <!-- <div class="carousel-container">
             <div class="carousel-content animate__animated animate__fadeInUp">
               <h2>Chào mừng đến với <span>VNGREEN</span></h2>
               <p>Thành lập ngày 9/9/2004, VNGREEN hiện là công ty Internet và công nghệ hàng đầu, kỳ lân công nghệ 1 tỷ USD + duy nhất của Việt Nam.</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url(public/assets/img/slide/VNG-15.jpg);">
-          <div class="carousel-container">
+        <div class="carousel-item" style="background-image: url(public/assets/img/home/2.jpg);">
+          <!-- <div class="carousel-container">
             <div class="carousel-content animate__animated animate__fadeInUp">
               <h2>Thành công với VNGREEN</h2>
               <p>Có hơn 80 triệu người dùng tại 193 quốc gia với 15 ngôn ngữ.
@@ -29,17 +30,17 @@
                 Xác định bổ sung các mảng kinh doanh chiến lược mới như Tài chính và thanh toán, Dịch vụ Đám mây.
                 Nền tảng Zalo cán mốc 100 triệu người dùng, không chỉ ở Việt Nam.</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url(public/assets/img/slide/VNG\ Campus\ 31.jpg);">
-          <div class="carousel-container">
+        <div class="carousel-item" style="background-image: url(public/assets/img/home/3.jpg);">
+          <!-- <div class="carousel-container">
             <div class="carousel-content animate__animated animate__fadeInUp">
               <h2>Đồng hành cùng VNGREEN</h2>
               <p>Chúng tôi luôn chào đón các ứng viên hoài bão, mong muốn dấn thân vào lĩnh vực Internet, yêu thích làm việc trong một môi trường năng động, trẻ trung và đầy thử thách.</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
