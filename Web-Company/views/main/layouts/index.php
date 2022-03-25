@@ -66,22 +66,23 @@
 
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2>Kiến tạo công nghệ và Phát triển con người. Vì một cuộc sống tốt đẹp hơn</h2>
-            <h3>VNGREEN tin vào sức mạnh thay đổi cuộc sống của Internet và không ngừng phát triển để mang đến cho người dùng những trải nghiệm ý nghĩa.</h3>
+            <h2>Sáng tạo vì con người Caring Inovator</h2>
+            <h4>Mỗi khách hàng là một con người – một cá thể riêng biệt, cần được tôn trọng, quan tâm và lắng nghe, thấu hiểu và phục vụ một cách riêng biệt. Liên tục đổi mới, cùng với khách hàng sáng tạo ra các sản phẩm, dịch vụ ngày càng hoàn hảo. </h4>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <p>
-              Thế mạnh của VNGREEN chính là con người và văn hóa doanh nghiệp. Dựa vào kim chỉ nam là 3 giá trị cốt lõi, các thành viên ở VNGREEN luôn có tinh thần cống hiến vì sự phát triển chung của VNGREEN và cộng đồng. Giá trị cốt lõi mà VNGREEN hướng tới là:
+            Những giá trị cốt lõi là lời cam kết của Viettel đối với khách hàng, đối tác, các nhà đầu tư, với xã hội và với chính bản thân chúng tôi. Những giá trị này là kim chỉ nam cho mọi hoạt động của Viettel để trở thành một doanh nghiệp kinh doanh sáng tạo vì con người.
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Đón Nhận Thách Thức</li>
-              <li><i class="ri-check-double-line"></i> Phát triển đối tác</li>
-              <li><i class="ri-check-double-line"></i> Giữ gìn Chính trực</li>
+              <li><i class="ri-check-double-line" style="color:red;"></i> Thực tiễn là tiêu chuẩn kiểm nghiệm chân lý.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Trưởng thành qua những thách thức và thất bại.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Thích ứng nhanh là sức mạnh cạnh tranh.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Sáng tạo là sức sống.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Tư duy hệ thống.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Kết hợp Đông - Tây.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Truyền thống và cách làm người lính.</li>
+              <li><i class="ri-check-double-line"style="color:red;"></i> Viettel là ngôi nhà chung</li>
             </ul>
-            <p class="fst-italic">
-              Logo với hình dáng cách điệu một ngọn lửa đang cháy, logo VNG biểu trưng cho 3 giá trị quan trọng của công ty: nhiệt huyết, cầu tiến và năng động.
-              Hình dáng vươn lên thể hiện sức trẻ và tinh thần dấn thân.
-            </p>
           </div>
         </div>
 
@@ -92,8 +93,8 @@
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Sản phẩm</h2>
-          <p>Các lĩnh vực hoạt động của VNGREEN tập trung vào 4 nhóm sản phẩm chủ lực, mang đến cho người dùng những trải nghiệm phong phú và đơn giản hơn.</p>
+          <h2>Dịch vụ di động</h2>
+          <!-- <p>Các lĩnh vực hoạt động của VNGREEN tập trung vào 4 nhóm sản phẩm chủ lực, mang đến cho người dùng những trải nghiệm phong phú và đơn giản hơn.</p> -->
         </div>
         <div class="row">
           <div class="col-lg-2 col-md-0"></div>
@@ -105,7 +106,7 @@
                 </svg>
                 <i class="bx bx-game"></i>
               </div>
-              <h4><a href="#">Trò chơi trực tuyến</a></h4>
+              <h4><a href="#">Gói data</a></h4>
               <p>Phát triển và sản xuất trò chơi trực tuyến, nhập khẩu và Phát hành các trò chơi nổi tiếng thế giới.</p>
             </div>
           </div>
@@ -118,7 +119,7 @@
                 </svg>
                 <i class="bx bx-chat"></i>
               </div>
-              <h4><a href="#">Nền tảng kết nối</a></h4>
+              <h4><a href="#">Gói cước</a></h4>
               <p>Phát triển các nền tảng kết nối đa dạng, đa dịch vụ, phục vụ toàn diện nhu cầu kết nối, giải trí.</p>
             </div>
           </div>
@@ -134,7 +135,7 @@
                 </svg>
                 <i class="bx bx-money"></i>
               </div>
-              <h4><a href="#">Thanh toán và tài chính</a></h4>
+              <h4><a href="#">Dịch vụ quốc tế</a></h4>
               <p>Các nền tảng và dịch vụ trung gian thanh toán, tài chính cá nhân theo xu hướng mới.</p>
             </div>
           </div>
