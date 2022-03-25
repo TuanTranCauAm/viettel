@@ -14,12 +14,11 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Link liên kết</h4>
+            <h4>Dịch vụ di động</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.facebook.com/VNGCorporation.Page/">Facebook</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.youtube.com/channel/UCk2jT9v-BOmjbPZ08LUbTVA">Youtube</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.facebook.com/LifeAtVNG/">Life at VNG</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.facebook.com/groups/VNGRunClub/">VNG Run Club</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php?page=main&controller=services&action=index">Gói data</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php?page=main&controller=services&action=index">Gói cước</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php?page=main&controller=services&action=index">Dịch vụ quốc tế</a></li>
             </ul>
           </div>
 
