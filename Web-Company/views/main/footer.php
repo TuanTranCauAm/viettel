@@ -72,6 +72,9 @@
   <!-- Template Main JS File -->
   <script src="public/assets/js/main.js"></script>
 
+  <!-- Swiper -->
+  <script src="public/assets/js/swiper.js"></script>
+
 </body>
 
 </html>
