@@ -107,7 +107,7 @@ include_once('views/main/navbar.php');
                   </a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                  <a class="see-all-home" href="#">Xem tất cả</a>
+                  <a class="see-all-home" href="index.php?page=main&controller=services&action=index">Xem tất cả</a>
                 </div>
               </div>
               <div id="datapack" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="fade-up">
@@ -184,7 +184,7 @@ include_once('views/main/navbar.php');
                   </a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                  <a class="see-all-home" href="#">Xem tất cả</a>
+                  <a class="see-all-home" href="index.php?page=main&controller=services&action=index">Xem tất cả</a>
                 </div>
               </div>
               <div id="serviceplan" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="fade-up">
@@ -263,7 +263,7 @@ include_once('views/main/navbar.php');
                   </a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                  <a class="see-all-home" href="#">Xem tất cả</a>
+                  <a class="see-all-home" href="index.php?page=main&controller=services&action=index">Xem tất cả</a>
                 </div>
               </div>
               <div id="serviceplan" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="fade-up">
@@ -271,8 +271,8 @@ include_once('views/main/navbar.php');
                   <div class="carousel-item active" data-bs-interval="5000">
                     <div class="card-container col-md-12 col-md-offset-1 col-sm-12 col-xs-12">
                       <div class="col-sm-12 col-xs-12">
-                        <div class="entertainment-card ">
-                          <div class="entertainment-img">
+                        <div class="international-card ">
+                          <div class="international-img">
                             <img src="public/img/products/inter-video-call.png" alt="kplus" />
                           </div>
                           <h2>Gọi quốc tế có hình</h2>
@@ -291,8 +291,8 @@ include_once('views/main/navbar.php');
                   <div class="carousel-item" data-bs-interval="5000">
                     <div class="card-container col-md-12 col-md-offset-1 col-sm-12 col-xs-12">
                       <div class="col-sm-12 col-xs-12">
-                        <div class="entertainment-card ">
-                          <div class="entertainment-img">
+                        <div class="international-card ">
+                          <div class="international-img">
                             <img src="public/img/products/inter-call.png" alt="kplus" />
                           </div>
                           <h2>Gọi quốc tế thông thường</h2>
