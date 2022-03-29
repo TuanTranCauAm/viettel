@@ -565,7 +565,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #1bbd36;
+  background: #EE0033;
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -873,13 +873,13 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Clients
+# hr
 --------------------------------------------------------------*/
-.clients .clients-wrap {
+.hr .hr-wrap {
   border-top: 1px solid #ececec;
   border-left: 1px solid #ececec;
 }
-.clients .client-logo {
+.hr .hr-logo {
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -890,14 +890,17 @@ section {
   background: #fff;
   height: 100px;
 }
-.clients .client-logo img {
+.hr .hr-logo img {
   transition: all 0.3s ease-in-out;
   height: 36px;
   filter: grayscale(100%);
 }
-.clients .client-logo:hover img {
+.hr .hr-logo:hover img {
   filter: none;
   transform: scale(1.1);
+}
+.hr h4 {
+  font-weight: bold;
 }
 
 /*--------------------------------------------------------------
@@ -975,7 +978,7 @@ section {
   line-height: 0;
 }
 .team .member .social a:hover {
-  color: #1bbd36;
+  color: #EE0033;
 }
 .team .member .social i {
   font-size: 18px;
@@ -1004,6 +1007,13 @@ section {
 }
 .team .member:hover .social {
   opacity: 1;
+}
+.red-vt > .nav-item > .nav-link:not(.active):hover {
+  color: #EE0033;
+}
+.red-vt > .nav-item > .active,
+.red-vt > .nav-item > .active:hover{
+  background-color: #EE0033;
 }
 
 /*--------------------------------------------------------------
