@@ -45,7 +45,9 @@
                           <div class="entry-meta">
                             <ul>
                               <li class="d-flex align-items-center"><i class="bi bi-clock"></i><time>' . date("F j, Y, g:i a", strtotime($news->date)) . '</time></li>
+                              <!--
                               <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>' . count($news->comments) . ' Comments</li>
+                              -->
                             </ul>
                           </div>
   
@@ -58,6 +60,7 @@
                         </article><!-- End blog entry -->
                       
   
+                        <!--
                         <div class="blog-comments">
   
                           <h4 class="comments-count">' . count($news->comments) . ' Comments</h4>';
@@ -121,6 +124,7 @@
                           </div>
   
                         </div><!-- End blog comments -->
+                        -->
                     </div><!-- End blog entries list -->
                     
   
@@ -162,7 +166,9 @@
                         <div class="entry-meta">
                           <ul>
                             <li class="d-flex align-items-center"><i class="bi bi-clock"></i><time>' . date("F j, Y, g:i a", strtotime($news->date)) . '</time></li>
+                            <!--
                             <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>' . count($news->comments) . ' Comments</li>
+                            -->
                           </ul>
                         </div>
 
@@ -175,6 +181,7 @@
                       </article><!-- End blog entry -->
                     
 
+                      <!--
                       <div class="blog-comments">
 
                         <h4 class="comments-count">' . count($news->comments) . ' Comments</h4>';
@@ -238,6 +245,7 @@
                         </div>
 
                       </div><!-- End blog comments -->
+                      -->
                   </div><!-- End blog entries list -->
                   
 
@@ -278,7 +286,9 @@
                     <div class="entry-meta">
                       <ul>
                         <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time>' . date("F j, Y, g:i a", strtotime($news->date)) . '</time></li>
+                        <!--
                         <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>' . count($news->comments) . ' Bình luận</li>
+                        -->
                       </ul>
                     </div>
 

@@ -22,22 +22,22 @@ class BlogController extends BaseController
 		}
 		$newses = News::getAllShow();
 		$recent = News::recentNews();
-		foreach ($newses as $news)
-		{
-			$news->comments = Comment::getCommentByNews($news->id);
-			foreach ($news->comments as $comment)
-			{
-				$comment->replies = Comment::getReply(intval($comment->id));
-			}
-		}
-		foreach ($recent as $news)
-		{
-			$news->comments = Comment::getCommentByNews($news->id);
-			foreach ($news->comments as $comment)
-			{
-				$comment->replies = Comment::getReply(intval($comment->id));
-			}
-		}
+		// foreach ($newses as $news)
+		// {
+		// 	$news->comments = Comment::getCommentByNews($news->id);
+		// 	foreach ($news->comments as $comment)
+		// 	{
+		// 		$comment->replies = Comment::getReply(intval($comment->id));
+		// 	}
+		// }
+		// foreach ($recent as $news)
+		// {
+		// 	$news->comments = Comment::getCommentByNews($news->id);
+		// 	foreach ($news->comments as $comment)
+		// 	{
+		// 		$comment->replies = Comment::getReply(intval($comment->id));
+		// 	}
+		// }
 		$count = intdiv(count($newses), 4) + 1;
 		$newses = array_slice($newses, ($pg - 1) * 4, 4);
 		$data = array('newses' => $newses, 'recent' => $recent, 'count' => $count);
@@ -52,7 +52,7 @@ class BlogController extends BaseController
 		$user_id = $_POST['user_id'];
 		$parent = $_POST['parent'];
 
-		$req = Comment::reply($content, $news_id, $user_id, $parent);
+		// $req = Comment::reply($content, $news_id, $user_id, $parent);
 		echo 'success';
 		exit();
 	}
@@ -63,7 +63,7 @@ class BlogController extends BaseController
 		$news_id = $_POST['news_id'];
 		$user_id = $_POST['user_id'];
 
-		$req = Comment::insert($content, $news_id, $user_id);
+		// $req = Comment::insert($content, $news_id, $user_id);
 		echo 'success';
 		exit();
 	}

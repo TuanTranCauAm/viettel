@@ -281,7 +281,7 @@
         <div class="row no-gutters hr-wrap clearfix" data-aos="fade-up">
 
           <div class="col-md-4 col-12">
-            <div class="card m-3">
+            <div class="card m-3 h-100">
               <img class="card-img-top" src="public/assets/img/hr/1.webp" alt="kien-tao-tuong-lai">
               <div class="card-body">
                 <h4 class="card-title mb-3">Kiến tạo tương lai bạn mơ ước</h4>
@@ -291,7 +291,7 @@
           </div>
 
           <div class="col-md-4 col-12">
-            <div class="card m-3">
+            <div class="card m-3 h-100">
               <img class="card-img-top" src="public/assets/img/hr/2.webp" alt="vuon-len-cung-thu-thach">
               <div class="card-body">
                 <h4 class="card-title mb-3">Vươn lên cùng thử thách</h4>
@@ -304,7 +304,7 @@
           </div>
 
           <div class="col-md-4 col-12">
-            <div class="card m-3">
+            <div class="card m-3 h-100">
               <img class="card-img-top" src="public/assets/img/hr/3.webp" alt="phat-trien-cung-viettel">
               <div class="card-body">
                 <h4 class="card-title mb-3">Phát triển cùng Viettel</h4>

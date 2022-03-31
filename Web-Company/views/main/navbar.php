@@ -302,7 +302,7 @@
           <!-- <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li> -->
           <li><a href="index.php?page=main&controller=about&action=index">Giới thiệu Viettel</a></li>
           <li><a href="index.php?page=main&controller=services&action=index">Sản phẩm</a></li>
-          <li><a href="index.php?page=main&controller=blog&action=index">Tin tức</a></li>
+          <li><a href="index.php?page=main&controller=allnews&action=index">Tin tức</a></li>
           <li><a href="index.php?page=main&controller=archive&action=index">Chất lượng dịch vụ</a></li>
           <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
           <?php
