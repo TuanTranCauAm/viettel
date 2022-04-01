@@ -18,7 +18,11 @@ class AllnewsController extends BaseController {
 			$pg = 1;
 		}
         $listnews = Newsarticle::get($pg, 5); // 5 articles per page
-        $numpages = intdiv(Newsarticle::getCountArticle(), 5) + 1;
+        $countarticle = Newsarticle::getCountArticle();
+        if ($countarticle == 0)
+            $numpages = 0;
+        else
+            $numpages = intdiv($countarticle - 1, 5) + 1;
         $numnews = count($listnews);
         // Get first news of list of news
         if ($numnews == 0) {

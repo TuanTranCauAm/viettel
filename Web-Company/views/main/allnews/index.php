@@ -81,7 +81,7 @@
             <div class="row mt-3">
                 <div class="d-flex flex-row justify-content-center">
                     <ul class="nav nav-pills red-vt">
-                        <?php if (!is_null($firstnews)) {
+                        <?php if ($numpages > 0) {
                             // create link to first page
                             $echoPagenum_li(1, 1, '<i class="fa-solid fa-angles-left"></i>');
                             // create link to previous page
