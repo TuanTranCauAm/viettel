@@ -61,8 +61,8 @@ class Newsarticle {
 
     static function getCountArticle() {
         $db = DB::getInstance();
-        $req = $db->query("SELECT COUNT(*) FROM ALLNEWS WHERE status=1");
+        $req = $db->query("SELECT COUNT(*) as countArticle FROM ALLNEWS WHERE status=1");
         $countArticle = $req->fetch_assoc();
-        return $countArticle;
+        return $countArticle["countArticle"];
     }
 }

@@ -18,7 +18,7 @@ class AllnewsController extends BaseController {
 			$pg = 1;
 		}
         $listnews = Newsarticle::get($pg, 5); // 5 articles per page
-        $numpages = Newsarticle::getCountArticle();
+        $numpages = intdiv(Newsarticle::getCountArticle(), 5) + 1;
         $numnews = count($listnews);
         // Get first news of list of news
         if ($numnews == 0) {
@@ -32,7 +32,7 @@ class AllnewsController extends BaseController {
             $firstnews = $listnews[0];
             $listnews = array_slice($listnews, 1);
         }
-        $data = array('firstnews' => $firstnews, 'listnews' => $listnews, 'numpages' => $numpages);
+        $data = array('firstnews' => $firstnews, 'listnews' => $listnews, 'pg' => $pg, 'numpages' => $numpages);
         $this->render('index', $data);
     }
 }
