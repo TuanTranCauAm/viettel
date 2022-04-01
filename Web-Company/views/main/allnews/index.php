@@ -36,7 +36,7 @@
     <section id="allnews" class="allnews">
         <div class="container" data-aos="fade-up">
             <div class="row">
-                <?php echo'
+                <?php if (!is_null($firstnews)) echo'
                     <div class="col-12 col-lg-8 pb-4">
                         <a href="#" title="' . $firstnews->title . '">
                             <div class="card m-3 d-flex flex-column flex-md-row h-100">
@@ -45,6 +45,7 @@
                             </div>
                         </a>
                     </div>';
+                    else echo 'Không có tin tức nào để hiển thị.';
 
                     foreach ($listnews as $news) {
                         echo'
