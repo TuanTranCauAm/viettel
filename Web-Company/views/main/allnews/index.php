@@ -32,13 +32,16 @@
                 </div>
             ';
         }
+        function getNewslink($news) {
+            return 'index.php?page=main&controller=allnews&action=news&id=' . strval($news->id);
+        }
     ?>
     <section id="allnews" class="allnews">
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <?php if (!is_null($firstnews)) echo'
                     <div class="col-12 col-lg-8 pb-4">
-                        <a href="#" title="' . $firstnews->title . '">
+                        <a href="' . getNewslink($firstnews) . '" title="' . $firstnews->title . '">
                             <div class="card m-3 d-flex flex-column flex-md-row h-100">
                                 <img src="' . $firstnews->thumbnail . '" class="w-100 w-md-50 card-img-top card-img-md-left">'
                                 . getNewscontent_cardBody($firstnews) . '
@@ -50,7 +53,7 @@
                     foreach ($listnews as $news) {
                         echo'
                         <div class="col-12 col-md-6 col-lg-4 pb-4">
-                            <a href="#" title="' . $news->title . '">
+                            <a href="' . getNewslink($news) . '" title="' . $news->title . '">
                                 <div class="card m-3 d-flex flex-column h-100">
                                     <img src="' . $news->thumbnail . '" class="w-100 card-img-top">'
                                     . getNewscontent_cardBody($news) . '
@@ -83,10 +86,12 @@
                 <div class="d-flex flex-row justify-content-center">
                     <ul class="nav nav-pills red-vt">
                         <?php if ($numpages > 0) {
-                            // create link to first page
-                            $echoPagenum_li(1, 1, '<i class="fa-solid fa-angles-left"></i>');
-                            // create link to previous page
-                            $echoPagenum_li($pg - 1, 1, '<i class="fa-solid fa-arrow-left"></i>');
+                            if ($pg > 1) {
+                                // create link to first page
+                                $echoPagenum_li(1, 1, '<i class="fa-solid fa-angles-left"></i>');
+                                // create link to previous page
+                                $echoPagenum_li($pg - 1, 1, '<i class="fa-solid fa-arrow-left"></i>');
+                            }
                             // create link to nearly page
                             if ($pg == 1) {
                                 $pagestart = 1;
@@ -113,10 +118,12 @@
                                 </li>
                                     ';
                             }
-                            // create link to next page
-                            $echoPagenum_li($pg + 1, $numpages, '<i class="fa-solid fa-arrow-right"></i>');
-                            // create link to last page
-                            $echoPagenum_li($numpages, $numpages, '<i class="fa-solid fa-angles-right"></i>');
+                            if ($pg < $numpages) {
+                                // create link to next page
+                                $echoPagenum_li($pg + 1, $numpages, '<i class="fa-solid fa-arrow-right"></i>');
+                                // create link to last page
+                                $echoPagenum_li($numpages, $numpages, '<i class="fa-solid fa-angles-right"></i>');
+                            }
                         }
                         ?>
                     </ul>
