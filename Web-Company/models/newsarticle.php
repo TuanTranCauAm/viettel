@@ -65,4 +65,64 @@ class Newsarticle {
         $countArticle = $req->fetch_assoc();
         return $countArticle["countArticle"];
     }
+
+    static function getRelatednews($time, $numnews) {
+        $numnewsmidLater = intdiv($numnews, 2);
+        $numnewsmidEarlier = $numnews - $numnewsmidLater;
+        // get the news from database
+        $db = DB::getInstance();
+        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE($time) ORDER BY date ASC LIMIT $numnews");
+        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE($time) ORDER BY date DESC LIMIT $numnews");
+
+        // convert to array
+        if ($req1)  {
+            $newsLater = $req1->fetch_all(MYSQLI_ASSOC);
+            $numnewsLater = count($newsLater);
+        }
+        else {
+            $newsLater = array();
+            $numnewsLater = 0;
+        }
+        if ($req2) {
+            $newsEarlier = $req2->fetch_all(MYSQLI_ASSOC);
+            $numnewsEarlier = count($newsEarlier);
+        }
+        else {
+            $newsEarlier = array();
+            $numnewsEarlier = 0;
+        }
+
+        // choose number of news later and earlier than given time
+        if ($numnewsLater >= $numnewsmidLater) {
+            $numnewsLater = $numnewsmidLater;
+            if ($numnewsEarlier >= $numnewsmidEarlier) {
+                $numnewsEarlier = $numnewsmidEarlier;
+            }
+            else {
+                $numnewsLater += $numnewsmidEarlier - $numnewsEarlier;
+            }
+        }
+        else {
+            $numnewsEarlier += $numnewsmidLater - $numnewsLater;
+        }
+
+        // create list of news
+        $newsLater = array_slice($newsLater, 0, $numnewsLater);
+        $newsEarlier = array_slice($newsEarlier, 0, $numnewsEarlier);
+
+        $listnews = [];
+        foreach (array_merge($newsLater, $newsEarlier) as $news)
+        {
+            $listnews[] = new Newsarticle(
+                $news["id"],
+                $news["status"],
+                $news["thumbnail"],
+                $news["category"],
+                $news["title"],
+                $news["description"],
+                $news["date"]
+            );
+        }
+        return $listnews;
+    }
 }

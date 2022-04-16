@@ -25,7 +25,7 @@ $controllers = array(
   'blog' => ['index', 'comment', 'reply'],
   'services' => ['index'],
   'register' => ['index', 'submit', 'editInfo'],
-  'allnews' => ['index']
+  'allnews' => ['index', 'news']
   //'login' => ['index']
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 

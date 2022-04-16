@@ -1880,6 +1880,69 @@ section {
 }
 
 /*--------------------------------------------------------------
+# News - header
+--------------------------------------------------------------*/
+.news-header .news-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.news-header .news-overlay {
+  background-color: rgba(0,0,0, 0.6);
+}
+
+@media (min-width: 768px) {
+  .news-header .news-info {
+    font-size: 1.2rem;
+  }
+  
+  .news-header .news-title {
+    font-size: 2.5rem;
+  }
+  
+  .news-header .news-description {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .news-content .w-lg-75 {
+    width: 75%!important;
+  }
+
+  .news-content table {
+    max-width: calc(75vw - 10px)!important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .news-content .w-xl-50 {
+    width: 50%!important;
+  }
+
+  .news-content table {
+    max-width: calc(50vw - 10px)!important;
+  }
+}
+
+.news-content img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto!important;
+}
+
+.news-content blockquote {
+  border-color: #EE0033 !important;
+}
+
+.news-content table {
+  max-width: calc(100vw - 10px);
+}
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 #footer {
