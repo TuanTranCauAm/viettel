@@ -53,9 +53,9 @@ class AllnewsController extends BaseController {
             header('Location: index.php?page=main&controller=allnews&action=index'); // redirect to index page
         }
 
-        $relatednews = Newsarticle::getRelatednews($news->date, 3); // get 3 related news
+        $recentnews = Newsarticle::getRecentnews($news->id, $news->date, 6); // get 6 recent news
 
-        $data = array('news' => $news, 'relatednews' => $relatednews);
+        $data = array('news' => $news, 'recentnews' => $recentnews);
         $this->render('news', $data);
     }
 }

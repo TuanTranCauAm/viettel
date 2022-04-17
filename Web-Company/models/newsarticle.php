@@ -45,7 +45,11 @@ class Newsarticle {
     static function getArticle($article_id) {
         $db = DB::getInstance();
         $req = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date, content FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.id=$article_id and ALLNEWS.category_id=CATEGORYNEWS.id");
+        if (!$req) // sql query not success
+            return null;
         $news = $req->fetch_assoc();
+        if (!$news) // not exists article with given id
+            return null;
         $article = new Newsarticle(
             $news["id"],
             $news["status"],
@@ -66,31 +70,23 @@ class Newsarticle {
         return $countArticle["countArticle"];
     }
 
-    static function getRelatednews($time, $numnews) {
+    static function getRecentnews($id, $time, $numnews) {
         $numnewsmidLater = intdiv($numnews, 2);
         $numnewsmidEarlier = $numnews - $numnewsmidLater;
         // get the news from database
         $db = DB::getInstance();
-        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE($time) ORDER BY date ASC LIMIT $numnews");
-        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE($time) ORDER BY date DESC LIMIT $numnews");
+        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE('$time') and ALLNEWS.id != $id ORDER BY date ASC LIMIT $numnews");
+        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE('$time') ORDER BY date DESC LIMIT $numnews");
+
+        if (!$req1 or !$req2) // query error
+            return null;
 
         // convert to array
-        if ($req1)  {
-            $newsLater = $req1->fetch_all(MYSQLI_ASSOC);
-            $numnewsLater = count($newsLater);
-        }
-        else {
-            $newsLater = array();
-            $numnewsLater = 0;
-        }
-        if ($req2) {
-            $newsEarlier = $req2->fetch_all(MYSQLI_ASSOC);
-            $numnewsEarlier = count($newsEarlier);
-        }
-        else {
-            $newsEarlier = array();
-            $numnewsEarlier = 0;
-        }
+        $newsLater = $req1->fetch_all(MYSQLI_ASSOC);
+        $numnewsLater = count($newsLater);
+
+        $newsEarlier = $req2->fetch_all(MYSQLI_ASSOC);
+        $numnewsEarlier = count($newsEarlier);
 
         // choose number of news later and earlier than given time
         if ($numnewsLater >= $numnewsmidLater) {

@@ -1893,13 +1893,21 @@ section {
   background-color: rgba(0,0,0, 0.6);
 }
 
+.news-header .news-title {
+  font-size: 2rem;
+}
+
+.news-header .news-info {
+  font-size: .85rem;
+}
+
 @media (min-width: 768px) {
-  .news-header .news-info {
-    font-size: 1.2rem;
+  .news-header .news-md-info {
+    font-size: 1.2rem !important;
   }
   
-  .news-header .news-title {
-    font-size: 2.5rem;
+  .news-header .news-md-title {
+    font-size: 2.5rem !important;
   }
   
   .news-header .news-description {
@@ -1945,6 +1953,20 @@ section {
 .news-content table {
   max-width: calc(100vw - 10px);
 }
+
+/*--------------------------------------------------------------
+# News - recent news
+--------------------------------------------------------------*/
+.news-recent .news-recent-title {
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .news-recent .news-recent-md-title {
+    font-size: 2rem !important;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Footer
