@@ -1,20 +1,20 @@
 <?php
   include_once('views/main/navbar.php');
 ?>
-  <!-- ======= Breadcrumbs ======= -->
+
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
 
-      <div class="d-flex justify-content-between align-items-center">
+      <!-- <div class="d-flex justify-content-between align-items-center">
         <h1 style="color: white;"><strong>CHÚNG TÔI</strong></h1>
         <ol>
           <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
           <li><a href="index.php?page=main&controller=about&action=index">Chúng tôi</a></li>
         </ol>
-      </div>
+      </div> -->
 
     </div>
-  </section><!-- End Breadcrumbs -->
+  </section>
   <main id="main">
     <!-- ======= About Us Section ======= -->
     <section id="about-us" class="about-us">
