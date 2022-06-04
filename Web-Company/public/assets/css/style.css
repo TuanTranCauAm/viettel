@@ -254,7 +254,7 @@ img{
   background: #fff;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
-  border-top: 2px solid #1bbd36;
+  border-top: 2px solid #EE0033;
 }
 .navbar .dropdown ul li {
   min-width: 200px;
@@ -270,7 +270,7 @@ img{
   font-size: 12px;
 }
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #1bbd36;
+  color: #EE0033;
 }
 .navbar .dropdown:hover > ul {
   opacity: 1;

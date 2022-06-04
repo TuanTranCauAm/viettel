@@ -7,8 +7,4 @@ class ErrorsController
 		require_once($view_file);
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> TQH
