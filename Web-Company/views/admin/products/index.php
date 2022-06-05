@@ -23,7 +23,6 @@ require_once('views/admin/content_layouts.php'); ?>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <!-- /.card-header-->
                         <div class="card-body">
                         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addUserModal">Thêm mới</button>
                         <div class="modal fade" id="addUserModal"  aria-labelledby="addUserModal" aria-hidden="true">

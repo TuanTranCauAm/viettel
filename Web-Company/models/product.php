@@ -3,15 +3,17 @@ require_once('connection.php');
 class Product
 {
     public $id;
+    public $type;
     public $name;
     public $price;
     public $description;
     public $content;
     public $img;
 
-    public function __construct($id, $name, $price, $description, $content, $img)
+    public function __construct($id, $type, $name, $price, $description, $content, $img)
     {
         $this->id = $id;
+        $this->type = $type;
         $this->name = $name;
         $this->price = $price;
         $this->description = $description;
@@ -28,6 +30,7 @@ class Product
         {
             $products[] = new Product(
                 $product['id'],
+                $product['type'],
                 $product['name'],
                 $product['price'],
                 $product['description'],
@@ -45,6 +48,7 @@ class Product
         $result = $req->fetch_assoc();
         $product = new Product(
             $result['id'],
+            $result['type'],
             $result['name'],
             $result['price'],
             $result['description'],
@@ -54,12 +58,12 @@ class Product
         return $product;
     }
 
-    static function insert($name, $price, $description, $content, $img)
+    static function insert($type, $name, $price, $description, $content, $img)
     {
         $db = DB::getInstance();
         $req = $db->query(
-            "INSERT INTO product (name, price, description, content, img)
-            VALUES ('$name', $price, '$description', '$content', '$img');");
+            "INSERT INTO product (type, name, price, description, content, img)
+            VALUES ('$type', '$name', $price, '$description', '$content', '$img');");
         return $req;
     }
 
@@ -70,13 +74,13 @@ class Product
         return $req;
     }
 
-    static function update($id, $name, $price, $description, $content, $img)
+    static function update($id, $type, $name, $price, $description, $content, $img)
     {
         $db = DB::getInstance();
         $req = $db->query(
             "
                 UPDATE product
-                SET name = '$name', price = $price, description = '$description', content = '$content', img = '$img'
+                SET type = '$type', name = '$name', price = $price, description = '$description', content = '$content', img = '$img'
                 WHERE id = $id
             ;");
     }
