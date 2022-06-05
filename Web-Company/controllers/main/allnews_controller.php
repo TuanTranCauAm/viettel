@@ -17,8 +17,13 @@ class AllnewsController extends BaseController {
 		{
 			$pg = 1;
 		}
-        $listnews = Newsarticle::get($pg, 5); // 5 articles per page
-        $countarticle = Newsarticle::getCountArticle();
+        if (isset($_GET['category']))
+        {
+            $categoryId = $_GET['category'];
+        }
+        else $categoryId = 0;
+        $listnews = Newsarticle::get($pg, 5,$categoryId); // 5 articles per page
+        $countarticle = Newsarticle::getCountArticle($categoryId);
         if ($countarticle == 0)
             $numpages = 0;
         else
@@ -36,7 +41,8 @@ class AllnewsController extends BaseController {
             $firstnews = $listnews[0];
             $listnews = array_slice($listnews, 1);
         }
-        $data = array('firstnews' => $firstnews, 'listnews' => $listnews, 'pg' => $pg, 'numpages' => $numpages);
+        $categories = Newsarticle::getCategories();
+        $data = array('firstnews' => $firstnews, 'listnews' => $listnews, 'pg' => $pg, 'numpages' => $numpages, 'categories' => $categories);
         $this->render('index', $data);
     }
 
@@ -54,7 +60,7 @@ class AllnewsController extends BaseController {
         }
 
         $recentnews = Newsarticle::getRecentnews($news->id, $news->date, 6); // get 6 recent news
-
+        
         $data = array('news' => $news, 'recentnews' => $recentnews);
         $this->render('news', $data);
     }

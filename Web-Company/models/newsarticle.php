@@ -1,6 +1,7 @@
 <?php
 require_once('connection.php');
-class Newsarticle {
+class Newsarticle
+{
     public $id;
     public $status;
     public $thumbnail;
@@ -9,10 +10,10 @@ class Newsarticle {
     public $description;
     public $date;
     public $content;
-    
+
     public function __construct($id, $status, $thumbnail, $category, $title, $description, $date, $content = null)
     {
-        $this->id = $id;        
+        $this->id = $id;
         $this->status = $status;
         $this->thumbnail = $thumbnail;
         $this->category = $category;
@@ -22,13 +23,17 @@ class Newsarticle {
         $this->content = $content;
     }
 
-    static function get($pagenum, $articleperpage) {
+    static function get($pagenum, $articleperpage, $categoryId = 0)
+    {
         $db = DB::getInstance();
-        $offset = ($pagenum - 1)*$articleperpage;
-        $req = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id ORDER BY date DESC LIMIT $offset, $articleperpage");
+        $offset = ($pagenum - 1) * $articleperpage;
+        if ($categoryId == 0)
+            $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id ORDER BY date DESC LIMIT $offset, $articleperpage";
+
+        else $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and CATEGORYNEWS.id = $categoryId ORDER BY date DESC LIMIT $offset, $articleperpage";
+        $req = $db->query($sql);
         $listnews = [];
-        foreach ($req->fetch_all(MYSQLI_ASSOC) as $news)
-        {
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $news) {
             $listnews[] = new Newsarticle(
                 $news["id"],
                 $news["status"],
@@ -42,7 +47,8 @@ class Newsarticle {
         return $listnews;
     }
 
-    static function getArticle($article_id) {
+    static function getArticle($article_id)
+    {
         $db = DB::getInstance();
         $req = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date, content FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.id=$article_id and ALLNEWS.category_id=CATEGORYNEWS.id");
         if (!$req) // sql query not success
@@ -63,14 +69,20 @@ class Newsarticle {
         return $article;
     }
 
-    static function getCountArticle() {
+    static function getCountArticle($categoryId = 0)
+    {
         $db = DB::getInstance();
-        $req = $db->query("SELECT COUNT(*) as countArticle FROM ALLNEWS WHERE status=1");
+        if ($categoryId == 0)
+            $sql = "SELECT COUNT(*) as countArticle FROM ALLNEWS WHERE status=1";
+        else
+            $sql = "SELECT COUNT(*) as countArticle FROM ALLNEWS WHERE status=1 and category_id=$categoryId";
+        $req = $db->query($sql);
         $countArticle = $req->fetch_assoc();
         return $countArticle["countArticle"];
     }
 
-    static function getRecentnews($id, $time, $numnews) {
+    static function getRecentnews($id, $time, $numnews)
+    {
         $numnewsmidLater = intdiv($numnews, 2);
         $numnewsmidEarlier = $numnews - $numnewsmidLater;
         // get the news from database
@@ -93,12 +105,10 @@ class Newsarticle {
             $numnewsLater = $numnewsmidLater;
             if ($numnewsEarlier >= $numnewsmidEarlier) {
                 $numnewsEarlier = $numnewsmidEarlier;
-            }
-            else {
+            } else {
                 $numnewsLater += $numnewsmidEarlier - $numnewsEarlier;
             }
-        }
-        else {
+        } else {
             $numnewsEarlier += $numnewsmidLater - $numnewsLater;
         }
 
@@ -107,8 +117,7 @@ class Newsarticle {
         $newsEarlier = array_slice($newsEarlier, 0, $numnewsEarlier);
 
         $listnews = [];
-        foreach (array_merge($newsLater, $newsEarlier) as $news)
-        {
+        foreach (array_merge($newsLater, $newsEarlier) as $news) {
             $listnews[] = new Newsarticle(
                 $news["id"],
                 $news["status"],
@@ -120,5 +129,12 @@ class Newsarticle {
             );
         }
         return $listnews;
+    }
+    static function getCategories()
+    {
+        $db = DB::getInstance();
+        $req = $db->query("SELECT * FROM CATEGORYNEWS");
+        $categories = $req->fetch_all(MYSQLI_ASSOC);
+        return $categories;
     }
 }

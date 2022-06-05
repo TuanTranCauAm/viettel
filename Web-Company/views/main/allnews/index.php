@@ -1,11 +1,11 @@
 <?php
-  include_once('views/main/navbar.php');
+include_once('views/main/navbar.php');
 ?>
-  <!-- ======= Breadcrumbs ======= -->
-  <section id="breadcrumbs" class="breadcrumbs">
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
 
-      <!-- <div class="d-flex justify-content-between align-items-center">
+        <!-- <div class="d-flex justify-content-between align-items-center">
         <h1 style="color: white;"><strong>TIN TỨC</strong></h1>
         <ol>
           <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li>
@@ -14,14 +14,15 @@
       </div> -->
 
     </div>
-  </section><!-- End Breadcrumbs -->
+</section><!-- End Breadcrumbs -->
 
-  <main id="main">
+<main id="main">
     <!-- News -->
     <?php
-        function getNewscontent_cardBody($news) {
-            $newsdate = strtotime($news->date);
-            return '
+    function getNewscontent_cardBody($news)
+    {
+        $newsdate = strtotime($news->date);
+        return '
                 <div class="card-body">
                     <small class="text-muted text-uppercase">' . $news->category . '</small>
                     <h4 class="card-title my-3 text-uppercase font-weight-bold">' . $news->title . '</h4>
@@ -31,40 +32,64 @@
                     </small>
                 </div>
             ';
-        }
-        function getNewslink($news) {
-            return 'index.php?page=main&controller=allnews&action=news&id=' . strval($news->id);
-        }
+    }
+    function getNewslink($news)
+    {
+        return 'index.php?page=main&controller=allnews&action=news&id=' . strval($news->id);
+    }
     ?>
-    <section id="allnews" class="allnews">
-        <div class="container" data-aos="fade-up">
+
+    <div class="container" data-aos="fade-up">
+        <section id="allnews" class="allnews">
+            <div class="container d-flex align-items-center justify-content-around">
+                <div>
+                    <label for="category">Phân loại</label>
+                    <select id="selectC" class="form-select" name="category">
+                        <option value="" selected disabled hidden>Chọn</option>
+                        <option value="0">Tất cả</option>
+                        <?php
+                        foreach ($categories as $category) {
+                            echo
+                            '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="sort">Sắp xếp</label>
+                    <select class="form-select" name="sort">
+                        <option value="latest">Mới nhất</option>
+                        <option value="oldest">Cũ nhất</option>
+                    </select>
+                </div>
+            </div>
             <div class="row">
-                <?php if (!is_null($firstnews)) echo'
+                <?php if (!is_null($firstnews)) echo '
                     <div class="col-12 col-lg-8 pb-4">
                         <a href="' . getNewslink($firstnews) . '" title="' . $firstnews->title . '">
                             <div class="card m-3 d-flex flex-column flex-md-row h-100">
                                 <img src="' . $firstnews->thumbnail . '" class="w-100 w-md-50 card-img-top card-img-md-left">'
-                                . getNewscontent_cardBody($firstnews) . '
+                    . getNewscontent_cardBody($firstnews) . '
                             </div>
                         </a>
                     </div>';
-                    else echo 'Không có tin tức nào để hiển thị.';
+                else echo 'Không có tin tức nào để hiển thị.';
 
-                    foreach ($listnews as $news) {
-                        echo'
+                foreach ($listnews as $news) {
+                    echo '
                         <div class="col-12 col-md-6 col-lg-4 pb-4">
                             <a href="' . getNewslink($news) . '" title="' . $news->title . '">
                                 <div class="card m-3 d-flex flex-column h-100">
                                     <img src="' . $news->thumbnail . '" class="w-100 card-img-top">'
-                                    . getNewscontent_cardBody($news) . '
+                        . getNewscontent_cardBody($news) . '
                                 </div>
                             </a>
                         </div>
                         ';
-                    }
+                }
                 ?>
             </div>
-            
+
             <!-- Pagination -->
             <?php
             $getPageLink = function ($numpage) use ($numpages) {
@@ -75,8 +100,10 @@
             $echoPagenum_li = function ($numpage, $pagedisabled, $icon) use ($getPageLink, $pg) {
                 echo '
                 <li class="nav-item">
-                    <a href="' . $getPageLink($numpage) . '" class="nav-link'; if ($pg == $pagedisabled) echo ' disabled'; echo '">'
-                        . $icon . '
+                    <a href="' . $getPageLink($numpage) . '" class="nav-link';
+                if ($pg == $pagedisabled) echo ' disabled';
+                echo '">'
+                    . $icon . '
                     </a>
                 </li>
                 ';
@@ -96,12 +123,10 @@
                             if ($pg == 1) {
                                 $pagestart = 1;
                                 $pageend = 3;
-                            }
-                            elseif ($pg == $numpages) {
+                            } elseif ($pg == $numpages) {
                                 $pageend = $numpages;
                                 $pagestart = $numpages - 2;
-                            }
-                            else {
+                            } else {
                                 $pagestart = $pg - 1;
                                 $pageend = $pg + 1;
                             }
@@ -112,8 +137,10 @@
                             for ($pagenbr = $pagestart; $pagenbr <= $pageend; $pagenbr++) {
                                 echo '
                                 <li class="nav-item">
-                                    <a href="' . $getPageLink($pagenbr) . '" class="nav-link'; if ($pagenbr == $pg) echo ' active disabled'; echo '">' 
-                                        . $pagenbr . '
+                                    <a href="' . $getPageLink($pagenbr) . '" class="nav-link';
+                                if ($pagenbr == $pg) echo ' active disabled';
+                                echo '">'
+                                    . $pagenbr . '
                                     </a>
                                 </li>
                                     ';
@@ -129,24 +156,36 @@
                     </ul>
                 </div>
             </div>
-        </div>
+    </div>
     </section>
-  </main>
+</main>
 
-  <?php
-function console_log($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-');';
+<?php
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
     if ($with_script_tags) {
         $js_code = '<script>' . $js_code . '</script>';
     }
     echo $js_code;
-}?>
-<?=console_log($numpages)?>
-  <?php
+} ?>
+<?= console_log($numpages) ?>
+<?php
 include_once('views/main/footer.php');
 ?>
-
+<script type="text/javascript">
+    $(function() {
+        $('#selectC').on('change', function() {
+            var categoryId = $(this).val(); 
+            if (categoryId) {
+                window.location = 'index.php?page=main&controller=allnews&action=index&category=' + categoryId; 
+                // $(this).selected = true;
+            }
+            return false;
+        });
+    });
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="public/plugins/jquery/jquery.min.js"></script>
 <!-- <script src="public/js/blog/index.js"></script> -->
