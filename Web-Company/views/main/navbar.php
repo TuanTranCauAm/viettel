@@ -293,17 +293,17 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.php?page=main&controller=layouts&action=index"><img src="public/uploads/favicon.png" class="img-fluid" alt=""></a>
+      <a href="index.php?page=main&controller=layouts&action=index"><img src="public/uploads/favicon.png" class="logo" alt=""></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="public/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar  order-lg-0">
         <ul>
           <!-- <li><a href="index.php?page=main&controller=layouts&action=index">Trang chủ</a></li> -->
-          <li><a href="index.php?page=main&controller=about&action=index">Giới thiệu Viettel</a></li>
+          <li><a href="index.php?page=main&controller=about&action=index">Giới thiệu</a></li>
           <li><a href="index.php?page=main&controller=services&action=index">Sản phẩm</a></li>
           <li><a href="index.php?page=main&controller=allnews&action=index">Tin tức</a></li>
-          <li><a href="index.php?page=main&controller=archive&action=index">Chất lượng dịch vụ</a></li>
+          <li><a href="index.php?page=main&controller=archive&action=index">Thành tựu</a></li>
           <li><a href="index.php?page=main&controller=contact&action=index">Kết nối</a></li>
           <?php
           if (!isset($_SESSION["guest"])){
