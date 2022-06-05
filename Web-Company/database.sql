@@ -5,13 +5,15 @@ USE web;
 
 CREATE TABLE `PRODUCT` (
   `id` int AUTO_INCREMENT,
-  `price` int  DEFAULT NULL,
+  `type` int,
   `name` varchar(255)  DEFAULT NULL,
+  `price` int  DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `content` varchar(10000)  DEFAULT NULL,
   `img` varchar(255)  DEFAULT NULL,
   primary key (id)
 );
+
 
 CREATE TABLE `NEWS` (
   `id` int AUTO_INCREMENT,
@@ -43,7 +45,7 @@ CREATE TABLE `ALLNEWS` (
 ) ;
 
 CREATE TABLE `USER` (
-  `phone` varchar(10) DEFAULT NULL,
+  `phone` varchar(10),
   `profile_photo` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
@@ -101,11 +103,32 @@ VALUES ('123456789', '123456789', 'TRAN TRUNG', 'TUAN', 1, 1, 1, 'Nam');
 -- INSERT INTO `USER` (email, fname, lname, gender, age, phone, password)
 -- VALUES ('user@hcmut.edu.vn', 'Nguyen Van', 'B', 0, 30, '0123456789', '');
 
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 5000, 'ST5K', '500MB sử dụng đến 24h ngày đăng ký (gia hạn tự động)');
 
-INSERT INTO `PRODUCT` (name, price, description, content)
-VALUES ('Chè thập cẩm', 25000, 'Chè rất ngon', 'Đây là một món chè tươi ngon bổ dưỡng');
-INSERT INTO `PRODUCT` (name, price, description, content)
-VALUES ('Chè Huế', 25000, 'Chè rất ngon', 'Đây là một món chè đến từ Huế');
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 10000, 'ST10K', '2GB sử dụng đến 24h00 ngày đăng ký');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 15000, 'ST15K', '3GB tốc độ cao sử dụng trong 3 ngày (gia hạn tự động)');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 10000, 'ECOD10', '500MB sử dụng trong 30 ngày (trả trước), hết tháng (trả sau).');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 20000, 'ECOD20', '1.5GB sử dụng trong 30 ngày (trả trước), hết tháng (trả sau).');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (1, 5000, 'DC5', '1GB trong 24h kể từ thời điểm đăng ký');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (2, 500000, 'D500T', 'Có 60GB data tốc độ cao. Chu kỳ 360 ngày.');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (2, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
+
+INSERT INTO PRODUCT (type, price, name, description)
+VALUES (3, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
 
 INSERT INTO `NEWS` (status, date, title, description, content)
 VALUES (1, '2021-11-11', 'Ca nhiễm tăng, TP.HCM kiểm soát di biến động dân cư ra sao?', 
