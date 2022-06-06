@@ -127,8 +127,32 @@ VALUES (2, 500000, 'D500T', 'Có 60GB data tốc độ cao. Chu kỳ 360 ngày.'
 INSERT INTO PRODUCT (type, price, name, description)
 VALUES (2, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
 
-INSERT INTO PRODUCT (type, price, name, description)
-VALUES (3, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
+INSERT INTO PRODUCT (type, price, name, description, img)
+VALUES (3, 0, 'Gọi có hình', 
+'Gọi Quốc tế có hình (Video call quốc tế) là dịch vụ giúp khách hàng của Viettel có thể 
+nhìn thấy hình ảnh trực tiếp của người nhận cuộc gọi.',
+"public/img/products/inter-video-call.png");
+
+INSERT INTO PRODUCT (type, price, name, description, img)
+VALUES (3, 0, 'Gọi thông thường', 
+'Giữ liên lạc với bạn bè, người thân và đối tác nước ngoài dù bạn ở bất kỳ đâu trên lãnh 
+thổ Việt Nam với giá cước tốt nhất và chất lượng tốt nhất.',
+"public/img/products/inter-call.png");
+
+INSERT INTO PRODUCT (type, price, name, description, img)
+VALUES (3, 0, 'MMS quốc tế', 
+'Dịch vụ tin nhắn đa phương tiện quốc tế giúp khách hàng thuê bao di động của Viettel gửi 
+và nhận tin nhắn đa phương tiện (file văn bản, hình ảnh, âm thanh) tới các thuê bao điện thoại 
+(di động, cố định,…) thuộc các quốc gia và vùng lãnh thổ khác trên thế giới.',
+"public/img/products/MMS.png");
+
+INSERT INTO PRODUCT (type, price, name, description, img)
+VALUES (3, 0, 'SMS quốc tế', 
+'Dịch vụ giúp khách hàng gửi tin nhắn (SMS) tới thuê bao di động thuộc các quốc gia và vùng 
+lãnh thổ trên thế giới. Dịch vụ được hỗ trợ kết nối tới tất cả các mạng viễn thông/di động, do 
+đó khách hàng có thể dễ dàng liên lạc với bạn bè, người thân, đối tác ở bất kỳ nơi nào trên thế 
+giới một cách đơn giản và nhanh chóng nhất.',
+"public/img/products/SMS.png");
 
 INSERT INTO `NEWS` (status, date, title, description, content)
 VALUES (1, '2021-11-11', 'Ca nhiễm tăng, TP.HCM kiểm soát di biến động dân cư ra sao?', 
