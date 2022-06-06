@@ -28,7 +28,7 @@ class User
         $this->updateAt = $updateAt;
         $this->password = $password;
     }
-    /*
+    
     static function getAll()
     {
         $db = DB::getInstance();
@@ -39,21 +39,22 @@ class User
         $users = [];
         foreach($req->fetch_all(MYSQLI_ASSOC) as $user) {
             $users[] = new User(
-                $user['email'],
+                $user['phone'],
                 $user['profile_photo'],
                 $user['fname'],
                 $user['lname'],
+                $user['day'],
+                $user['month'],
+                $user['year'],
                 $user['gender'],
-                $user['age'],
-                $user['phone'],
                 $user['createAt'],
                 $user['updateAt'],
-                '' // Do not return password
+                "Private"
             );
         }
         return $users;
     }
-    */
+    
     static function get($phone)
     {
         $db = DB::getInstance();
@@ -67,7 +68,7 @@ class User
         $result = $req->fetch_assoc();
         $user = new User(
             $result['phone'],
-            $result['profile_photo'],
+            $result['profile_photo'], 
             $result['fname'],
             $result['lname'],
             $result['day'],
@@ -76,7 +77,7 @@ class User
             $result['gender'],
             $result['createAt'],
             $result['updateAt'],
-            '' // Do not return password
+            "Private"
         );
         return $user;
     }
@@ -138,24 +139,18 @@ class User
         if (User::validation($email, $oldpassword)) {
             $password = password_hash($newpassword, PASSWORD_DEFAULT);
             $db = DB::getInstance();
-            $req = $db->query(
-                "UPDATE user
-                SET password = '$password', updateAt = NOW()
-                WHERE email = '$email';");
+            $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE email = '$email';");
             return $req;
-        } else {
+        } 
+        else
             return false;
-        }
     }
 
     static function changePassword_($email, $newpassword)
     {
         $password = password_hash($newpassword, PASSWORD_DEFAULT);
         $db = DB::getInstance();
-        $req = $db->query(
-            "UPDATE user
-            SET password = '$password', updateAt = NOW()
-            WHERE email = '$email';");
+        $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE email = '$email';");
         return $req;
     }
 }

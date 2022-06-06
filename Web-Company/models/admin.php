@@ -34,7 +34,7 @@ class Admin
     {
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM admin WHERE username = '$username'");
-        if (@password_verify($password, $req->fetch_assoc()['password']))
+        if ($password == $req->fetch_assoc()['password'])
             return true;
         else
             return false;
@@ -71,7 +71,7 @@ class Admin
     static function getAll()
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM admin");
+        $req = $db->query("SELECT * FROM ADMIN");
         $admins = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $admin) {
             $admins[] = new Admin(

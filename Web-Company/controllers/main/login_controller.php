@@ -1,6 +1,7 @@
 <?php
 require_once('controllers/main/base_controller.php');
 require_once('models/user.php');
+require_once('models/admin.php');
 
 class LoginController extends BaseController{
 	function __construct(){
@@ -20,6 +21,11 @@ class LoginController extends BaseController{
 			if ($check == 1){
 				$_SESSION["guest"] = $phone;
 				header('Location: index.php?page=main&controller=layouts&action=index');
+			}
+			else if(Admin::validation($phone, $password)){
+				if (!isset($_SESSION["user"]))
+					$_SESSION["user"] = $phone;
+				header("Location: index.php?page=admin&controller=layouts&action=index");
 			}
 			else{
 				$err = "Tài khoản hoặc mật khẩu không đúng";

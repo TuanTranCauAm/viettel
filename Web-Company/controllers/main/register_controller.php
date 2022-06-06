@@ -25,7 +25,7 @@ class RegisterController extends BaseController
 		$year = $_POST['year'];
 		$gender = $_POST['gender'];
 		echo $phone . $password . $fname . $lname . $day . $month . $year . $gender;
-		$req = User::insert($phone, 'public/img/user/default.JPG', $password, $fname, $lname, $day, $month, $year, $gender);
+		$req = User::insert($phone, 'public/img/user/default.png', $password, $fname, $lname, $day, $month, $year, $gender);
 		if($req){header('Location: index.php?page=main&controller=login&action=index');}
 		else{header('Location: index.php?page=main&controller=register&action=index&flag=false');}
 	}

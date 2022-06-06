@@ -57,7 +57,7 @@
     echo '
       <div class="modal fade" id="UserInfo" tabindex="-1" role="dialog" aria-labelledby="UserInfo" aria-hidden="true" style="background-color:linear-gradient(to right, #f1b1b1 , #82e6e8);">
       <div class="modal-dialog" role="document">
-        <div class="modal-content" style="border:solid;border-color:red;border-radius:25px;">
+        <div class="modal-content" style="border:solid;border-color:red;border-radius:25px;width:500px">
           <div class="modal-header">
             <h5 class="modal-title" style="color:red">Thông tin cá nhân</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
