@@ -2,27 +2,27 @@
 require_once('controllers/main/base_controller.php');
 require_once('models/newsarticle.php');
 
-class AllnewsController extends BaseController {
+class AllnewsController extends BaseController
+{
     function __construct()
     {
         $this->folder = 'allnews';
     }
 
-    public function index() {
-		if (isset($_GET['pg']))
-		{
-			$pg = $_GET['pg'];
-		}
-		else 
-		{
-			$pg = 1;
-		}
-        if (isset($_GET['category']))
-        {
-            $categoryId = $_GET['category'];
+    public function index()
+    {
+        if (isset($_GET['pg'])) {
+            $pg = $_GET['pg'];
+        } else {
+            $pg = 1;
         }
-        else $categoryId = 0;
-        $listnews = Newsarticle::get($pg, 5,$categoryId); // 5 articles per page
+        if (isset($_GET['category'])) {
+            $categoryId = $_GET['category'];
+        } else $categoryId = 0;
+        if (isset($_GET['order'])) {
+            $order = $_GET['order'];
+        } else $order = "DESC";
+        $listnews = Newsarticle::get($pg, 5, $categoryId, $order); // 5 articles per page
         $countarticle = Newsarticle::getCountArticle($categoryId);
         if ($countarticle == 0)
             $numpages = 0;
@@ -32,12 +32,10 @@ class AllnewsController extends BaseController {
         // Get first news of list of news
         if ($numnews == 0) {
             $firstnews = null;
-        }
-        elseif ($numnews == 1) {
+        } elseif ($numnews == 1) {
             $firstnews = $listnews[0];
             $listnews = array();
-        }
-        else {
+        } else {
             $firstnews = $listnews[0];
             $listnews = array_slice($listnews, 1);
         }
@@ -46,21 +44,21 @@ class AllnewsController extends BaseController {
         $this->render('index', $data);
     }
 
-    public function news() {
+    public function news()
+    {
         if (isset($_GET['id'])) {
             $newsid = $_GET['id'];
-        }
-        else { // not given id
+        } else { // not given id
             header('Location: index.php?page=main&controller=allnews&action=index'); // redirect to index page
         }
-        
+
         $news = Newsarticle::getArticle($newsid);
         if (is_null($news)) { // not exists article with given id
             header('Location: index.php?page=main&controller=allnews&action=index'); // redirect to index page
         }
 
         $recentnews = Newsarticle::getRecentnews($news->id, $news->date, 6); // get 6 recent news
-        
+
         $data = array('news' => $news, 'recentnews' => $recentnews);
         $this->render('news', $data);
     }

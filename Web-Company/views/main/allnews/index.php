@@ -57,9 +57,10 @@ include_once('views/main/navbar.php');
                 </div>
                 <div>
                     <label for="sort">Sắp xếp</label>
-                    <select class="form-select" name="sort">
-                        <option value="latest">Mới nhất</option>
-                        <option value="oldest">Cũ nhất</option>
+                    <select id="selectS" class="form-select" name="sort">
+                        <option value="" selected disabled hidden>Chọn</option>
+                        <option value="DESC">Mới nhất</option>
+                        <option value="ASC">Cũ nhất</option>
                     </select>
                 </div>
             </div>
@@ -177,9 +178,19 @@ include_once('views/main/footer.php');
 <script type="text/javascript">
     $(function() {
         $('#selectC').on('change', function() {
-            var categoryId = $(this).val(); 
+            var categoryId = $(this).val();
             if (categoryId) {
-                window.location = 'index.php?page=main&controller=allnews&action=index&category=' + categoryId; 
+                window.location = 'index.php?page=main&controller=allnews&action=index&category=' + categoryId;
+                // $(this).selected = true;
+            }
+            return false;
+        });
+    });
+    $(function() {
+        $('#selectS').on('change', function() {
+            var order = $(this).val();
+            if (order) {
+                window.location = 'index.php?page=main&controller=allnews&action=index&order=' + order;
                 // $(this).selected = true;
             }
             return false;

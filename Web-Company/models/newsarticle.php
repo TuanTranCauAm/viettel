@@ -23,14 +23,15 @@ class Newsarticle
         $this->content = $content;
     }
 
-    static function get($pagenum, $articleperpage, $categoryId = 0)
+    static function get($pagenum, $articleperpage, $categoryId = 0, $order = "DESC")
     {
         $db = DB::getInstance();
         $offset = ($pagenum - 1) * $articleperpage;
+        // if ($order == 1) $order = "DESC";
+        // else $order = "ASC";
         if ($categoryId == 0)
-            $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id ORDER BY date DESC LIMIT $offset, $articleperpage";
-
-        else $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and CATEGORYNEWS.id = $categoryId ORDER BY date DESC LIMIT $offset, $articleperpage";
+            $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id ORDER BY date $order LIMIT $offset, $articleperpage";
+        else $sql = "SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and CATEGORYNEWS.id = $categoryId ORDER BY date $order LIMIT $offset, $articleperpage";
         $req = $db->query($sql);
         $listnews = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $news) {
