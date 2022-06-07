@@ -22,13 +22,23 @@ include_once('views/main/navbar.php');
     </section>
     <section class="product-detail pb-0">
         <div class="container w-100 w-lg-75 w-xl-50">
-
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Dịch vụ Thoại Quốc tế giúp khách hàng liên lạc với số thuê bao cố định, di động ở các Quốc gia, vùng lãnh thổ trên toàn thế giới.</li>
-                <li class="list-group-item">Hiện tại, Viettel đã kết nối trực tiếp với trên 100 nhà cung cấp dịch vụ cố định và di động lớn trên thế giới. Do đó, các khách hàng Viettel có thể hoàn toàn yên tâm thực hiện cuộc gọi thoại Quốc tế với chất lượng cao nhất, dễ dàng giữ liên lạc với bạn bè, người thân hay đối tác vào bất cứ khi nào, ở bất kỳ đâu trên toàn cầu.</li>
-            </ul>
-            
-            
+            <!-- <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h3 class="product-detail-title">Đối tượng sử dụng</h3>
+                    <p>Khách hàng đang sử dụng dịch vụ di động, dịch vụ cố định của Viettel</p>
+                </li>
+                <li class="list-group-item">
+                    <h3 class="product-detail-title">Lợi ích khi sử dụng dịch vụ</h3>
+                    <p>Viettel cam kết luôn cung cấp dịch vụ Thoại Quốc tế với chất lượng thoại tốt nhất, đảm bảo trung thực và thời gian kết nối nhanh nhất. Khách hàng có thể thực hiện cuộc gọi thoại quốc tế từ bất kỳ thuê bao điện thoại nào của Viettel với cách quay số đơn giản.</p>
+                </li>
+                <li class="list-group-item">
+                    <h3 class="product-detail-title">Đăng ký/Hủy dịch vụ</h3>
+                    <p>Quý khách soạn tin nhắn QT OFF hoặc QT ON gửi 133 (miễn phí tin nhắn) để hủy/đăng ký dịch vụ.</p>
+                </li>
+            </ul> -->
+            <?php
+            echo $service->content;
+            ?>
         </div>
     </section>
 
