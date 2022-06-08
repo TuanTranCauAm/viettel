@@ -37,14 +37,14 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div  class="col-6"><label>Tên sản phẩm</label><input class="form-control" type="text" placeholder="Tên sản phẩm" name="name" /></div>
                                                 <div  class="col-6"><label>Giá</label><input class="form-control" type="number"  placeholder="Giá" name="price" /></div>
                                             </div>
-                                            
+                                            <div><label>Loại</label><input class="form-control" type="number"  placeholder="Loại" name="type" /></div>
                                             <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
                                             <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" name="content" rows="10"></textarea></div>
                                             <div class="form-group"> <label>Hình ảnh </label>&nbsp <input type="file" name="fileToUpload" id="fileToUpload" /></div>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
-                                        <button class="btn btn-primary" type="submit">Thêm mới</button>
+                                        <a href="index.php?page=admin&controller=products&action=add"><button class="btn btn-primary" type="submit">Thêm mới</button></a>
                                     </div>
                                     </form>
                                 </div>
@@ -56,6 +56,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
                                             <th scope="col">Tên sản phẩm</th>
+                                            <th scope="col">Loại</th>
                                             <th scope="col">Giá  </th>
                                             <th scope="col">Mô tả</th>
                                             <th scope="col">Nội dung</th>
@@ -80,6 +81,9 @@ require_once('views/admin/content_layouts.php'); ?>
                                                        ". $product->name."
                                                     </td>
                                                     <td>
+                                                       ". $product->type."
+                                                    </td>
+                                                    <td>
                                                       ".  $product->price."
                                                     </td>   
                                                     <td>
@@ -89,10 +93,10 @@ require_once('views/admin/content_layouts.php'); ?>
                                                        " .$product->content."
                                                     </td>   
                                                     <td >
-                                                        <img style=\"width: 600px; height:350px;\" src='$product->img'> 
+                                                        <img style=\"width: 300px; height:175px;\" src='$product->img'> 
                                                     </td>     
                                                     <td>
-                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$product->id' data-name='$product->name' data-price='$product->price' data-description='$product->description' data-content='$product->content' data-img='$product->img'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$product->id' data-type='$product->type' data-name='$product->name' data-price='$product->price' data-description='$product->description' data-content='$product->content' data-img='$product->img'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
                                                     <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$product->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
                                                   </td>                                                                                                                                                                                       
                                                 </tr>";
@@ -113,13 +117,13 @@ require_once('views/admin/content_layouts.php'); ?>
                                                             <div  class="col-6"><label>Tên sản phẩm</label><input class="form-control" type="text" placeholder="Tên sản phẩm" name="name" /></div>
                                                             <div  class="col-6"><label>Giá</label><input class="form-control" type="number"  placeholder="Giá" name="price" /></div>
                                                         </div>
-                                                        
+                                                        <div><label>Loại</label><input class="form-control" type="number"  placeholder="Loại" name="type" /></div>
                                                         <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
                                                         <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" name="content" rows="10"></textarea></div>
                                                         <div  class="form-group"><label>Url Hình ảnh </label><input class="form-control" type="text"  name="imggg"  readonly/></div>
                                                         <div class="form-group"> <label> Hình ảnh </label>&nbsp <input type="file" name="fileToUpload" id="fileToUpload" /></div>
                                                     </div>
-                                                    <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary formedit" type="submit">Chỉnh sửa</button></div>
+                                                    <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><a href="index.php?page=admin&controller=products&action=edit"><button class="btn btn-primary formedit" type="submit">Chỉnh sửa</button></a></div>
                                                 </form>
                                             </div>
                                         </div>
@@ -134,7 +138,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <div class="modal-body"><input type="hidden" name="id" />
                                                         <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
                                                     </div>
-                                                    <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
+                                                    <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><a href="index.php?page=admin&controller=products&action=delete"><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></a></div>
                                                 </form>
                                             </div>
                                         </div>
