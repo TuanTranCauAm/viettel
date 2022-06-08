@@ -19,6 +19,7 @@ $("#form-add-student").submit(function (e) {
   //Camel case
   var name = $("#form-add-student input[name='name']").val();
   var price = $("#form-add-student input[name='price']").val();
+  var type = $("#form-add-student input[name='type']").val();
   var description = $("#form-add-student textarea[name='description']").val();
   var content = $("#form-add-student textarea[name='content']").val();
 
@@ -29,12 +30,20 @@ $("#form-add-student").submit(function (e) {
   var b = url[length - 2];
   var c = url[length - 3];
   var ext = c + b + a;
-  if (name == "" || description == "" || content == "" || url == "") {
+  if (name == "" || description == "" || type == "") {
     $(document).Toasts("create", {
       class: "bg-danger",
       title: "Quản lý",
       subtitle: "Library",
       body: "Bạn phải nhập đầy đủ thông tin",
+    });
+  }
+  else if (type != 1 && type != 2 && type != 3) {
+    $(document).Toasts("create", {
+      class: "bg-danger",
+      title: "Quản lý",
+      subtitle: "Library",
+      body: "Loại sản phẩm chỉ bao gồm 1, 2 và 3",
     });
   } else {
     if (price < 1000) {
@@ -45,7 +54,6 @@ $("#form-add-student").submit(function (e) {
         body: "Bạn phải nhập giá lớn hơn 1000 đồng",
       });
     } else {
-      if (ext == "jpg" || ext == "png" || ext == "jpeg" || ext == "gif") {
         $(document).Toasts("create", {
           class: "bg-success",
           title: "Quản lý",
@@ -55,14 +63,6 @@ $("#form-add-student").submit(function (e) {
         form.unbind("submit").submit();
         setTimeout(function () {
         }, 1000);
-      } else {
-        $(document).Toasts("create", {
-          class: "bg-danger",
-          title: "Quản lý",
-          subtitle: "Library",
-          body: "Bạn phải gửi file định dạng ảnh",
-        });
-      }
     }
   }
 
@@ -73,6 +73,7 @@ $("#form-add-student").submit(function (e) {
 $(".btn-edit").click(function (e) {
   var id = $(this).data("id");
   var name = $(this).data("name");
+  var type = $(this).data("type");
   var price = $(this).data("price");
   var description = $(this).data("description");
   var content = $(this).data("content");
@@ -80,6 +81,7 @@ $(".btn-edit").click(function (e) {
 //   console.log(content);
   $("#EditStudentModal input[name='id']").val(id);
   $("#EditStudentModal input[name='name']").val(name);
+  $("#EditStudentModal input[name='type']").val(type);
   $("#EditStudentModal input[name='price']").val(price);
   $("#EditStudentModal textarea[name='description']").val(description);
   $("#EditStudentModal textarea[name='content']").val(content);
