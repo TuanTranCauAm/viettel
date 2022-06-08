@@ -16,7 +16,6 @@ require_once('views/admin/content_layouts.php'); ?>
 
 <!-- Code -->
 <div class="content-wrapper">
-	<!-- Add Content -->
 	<h1 style="margin-left: 10px">Sản phẩm</h1> 
     <section class="content">
         <div class="container-fluid">
