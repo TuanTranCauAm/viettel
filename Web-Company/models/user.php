@@ -97,10 +97,10 @@ class User
         return $req;
     }
 
-    static function delete($email)
+    static function delete($phone)
     {
         $db = DB::getInstance();
-        $req = $db->query("DELETE FROM user WHERE email = '$email';");
+        $req = $db->query("DELETE FROM user WHERE phone = '$phone';");
         return $req;
     }
 
@@ -134,23 +134,23 @@ class User
             return false;
     }
 
-    static function changePassword($email, $oldpassword, $newpassword)
+    static function changePassword($phone, $oldpassword, $newpassword)
     {
-        if (User::validation($email, $oldpassword)) {
+        if (User::validation($phone, $oldpassword)) {
             $password = password_hash($newpassword, PASSWORD_DEFAULT);
             $db = DB::getInstance();
-            $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE email = '$email';");
+            $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE phone = '$phone';");
             return $req;
         } 
         else
             return false;
     }
 
-    static function changePassword_($email, $newpassword)
+    static function changePassword_($phone, $newpassword)
     {
         $password = password_hash($newpassword, PASSWORD_DEFAULT);
         $db = DB::getInstance();
-        $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE email = '$email';");
+        $req = $db->query("UPDATE user SET password = '$password', updateAt = NOW() WHERE phone = '$phone';");
         return $req;
     }
 }

@@ -43,6 +43,33 @@ require_once('views/admin/content_layouts.php'); ?>
 						<div class="card-body">
 							<!-- Button trigger modal-->
 							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addUserModal">Thêm mới</button>
+							<button class="btn btn-warning" type="button" data-toggle="modal" data-target="#delUserModal">Xóa</button>
+							
+							<!--Modal-->
+							<div class="modal fade" id="delUserModal" tabindex="-1" role="dialog" aria-labelledby="delUserModal" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Xóa</h5>
+											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										</div>
+										
+										<form action="index.php?page=admin&controller=user&action=delete" enctype="multipart/form-data" method="post">
+											
+											<div class="modal-body">
+												<div class="form-group">
+													<label>Số điện thoại</label>
+														<input class="form-control" type="text" placeholder="Số điện thoại" name="phone" />
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-primary" type="submit">Xóa</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>	
+								</div>	
+							</div>	
 							<!-- Modal-->
 							<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -238,13 +265,13 @@ require_once('views/admin/content_layouts.php'); ?>
 														<div class="row">
 															<div class="col-md-4">
 																<div class="form-check">
-																	<input class="form-check-input" type="radio" name="gender" value="1" />
+																	<input class="form-check-input" type="radio" name="gender" value="0" />
 																	<label>Nam</label>
 																</div>
 															</div>
 															<div class="col-md-4">
 																<div class="form-check">
-																	<input class="form-check-input" type="radio" name="gender" value="0" />
+																	<input class="form-check-input" type="radio" name="gender" value="1" />
 																	<label>Nữ</label>
 																</div>
 															</div>
@@ -280,7 +307,7 @@ require_once('views/admin/content_layouts.php'); ?>
 									<th>Giới tính</th>
 									<th>Ngày sinh</th>
 									<th>Số điện thoại</th>
-									<th>Setting</th>
+									<th> </th>
 								</tr>
 							</thead>
 								<tbody>
@@ -296,9 +323,8 @@ require_once('views/admin/content_layouts.php'); ?>
 										echo "<td>" . $user->day . '/' . $user->month . '/' . $user->year ."</td>";
 										echo "<td>" . $user->phone . "</td>";
 										echo "<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-phone='$user->phone' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-img='$user->profile_photo' data-day='$user->day' data-month='$user->month' data-year='$user->year'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-changepass btn btn-warning btn-xs' style='margin-right: 5px' data-phone='$user->phone'> <i class='fas fa-lock'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-phone='$user->phone' data-img='$user->profile_photo'> <i class='fas fa-trash'></i></btn>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-phone='$user->phone' data-fname='$user->fname' data-lname='$user->lname' data-gender='$user->gender' data-img='$user->profile_photo' data-day='$user->day' data-month='$user->month' data-year='$user->year'>Chỉnh sửa</i></btn>
+							
 											</td>";
 										echo "</tr>";
 									}
@@ -315,7 +341,6 @@ require_once('views/admin/content_layouts.php'); ?>
 										</div>
 										<form action="index.php?page=admin&controller=user&action=editInfo" enctype="multipart/form-data" method="post">
 											<div class="modal-body">
-												<input type="hidden" name="phone">
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
@@ -335,7 +360,7 @@ require_once('views/admin/content_layouts.php'); ?>
 
 												<div class="row">
 													<div class="col-md-6">
-														<label style="color:red">Sinh:</label>
+														<label>Sinh:</label>
 														<div class="col-8 d-flex">
 															<select class="form-control col-6" name="day">
 																<option value="1">1</option>
@@ -488,13 +513,13 @@ require_once('views/admin/content_layouts.php'); ?>
 														<div class="row">
 															<div class="col-md-4">
 																<div class="form-check">
-																	<input class="form-check-input" type="radio" name="gender" value="1" />
+																	<input class="form-check-input" type="radio" name="gender" value="0" />
 																	<label>Nam</label>
 																</div>
 															</div>
 															<div class="col-md-4">
 																<div class="form-check">
-																	<input class="form-check-input" type="radio" name="gender" value="0" />
+																	<input class="form-check-input" type="radio" name="gender" value="1" />
 																	<label>Nữ</label>
 																</div>
 															</div>
@@ -503,7 +528,7 @@ require_once('views/admin/content_layouts.php'); ?>
 												</div>
 												<div class="form-group">
 													<label>Số điện thoại</label>
-													<input class="form-control" type="text" placeholder="Số điện thoại" name="phone" />
+													<input class="form-control" type="text" placeholder="Số điện thoại" name="phone" readonly/>
 												</div>
 
 												<div class="form-group">
@@ -520,30 +545,6 @@ require_once('views/admin/content_layouts.php'); ?>
 								</div>
 							</div>
 
-							<div class="modal fade" id="EditPassModal" tabindex="-1" role="dialog" aria-labelledby="EditPassModal" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title">Chỉnh sửa</h5>
-											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										</div>
-										<form action="index.php?page=admin&controller=user&action=editPass" method="post">
-											<div class="modal-body">
-												<input type="hidden" name="id" />
-												<div class="form-group">
-													<label>Mật khẩu mới</label>
-													<input class="form-control" type="password" placeholder="Nhập mật khẩu mới" name="new-password" />
-												</div>
-											</div>
-											<div class="modal-footer">
-												<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
-												<button class="btn btn-primary" type="submit">Cập nhật</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-
 							<div class="modal fade" id="DeleteUserModal" tabindex="-1" role="dialog" aria-labelledby="DeleteUserModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content bg-danger">
@@ -551,14 +552,14 @@ require_once('views/admin/content_layouts.php'); ?>
 											<h5 class="modal-title">Cảnh báo!</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
-										<form action="index.php?page=admin&controller=user&action=delete" method="post">
+										<form action="index.php?page=admin&controller=user&action=delete" enctype="multipart/form-data" method="post">
 											<div class="modal-body">
-												<input type="hidden" name="phone" />
-												<input type="hidden" name="img" />
+												<input type="text" name="phone" readonly/>
+												<input class="form-control" type="text" placeholder="Họ và tên lót" name="fname" />
 												<p>Xác nhận xóa khách hàng này</p>
-											</div>
-											<div class="modal-footer">
-												<button class="btn btn-danger btn-outline-light" type="submit">Xác nhận</button>
+												<div class="modal-footer">
+													<button class="btn btn-danger btn-outline-light" type="submit">Xác nhận</button>
+												</div>
 											</div>
 										</form>
 									</div>
@@ -578,6 +579,52 @@ require_once('views/admin/content_layouts.php'); ?>
 <?php
 require_once('views/admin/footer.php'); ?>
 <script src="public/js/user/index.js"></script>
+<!--
+<script>
+	*$("#tab-user")
+	.DataTable({
+		// dom: "Bfrtip", //Thêm dom vào thì nó sẽ hiện đồng thời giữa language và bottom
+		responsive: true,
+		lengthChange: false,
+		autoWidth: false,
+		language: {
+			url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
+		},
+	})
+
+	$(".btn-edit").click(function (e) {
+		var fname = $(this).data("fname");
+		var lname = $(this).data("lname");
+		var gender = $(this).data("gender");
+		var phone = $(this).data("phone");
+		var img = $(this).data("img");
+		var day = $(this).data("day");
+		var month = $(this).data("month");
+		var year = $(this).data("year");
+		// console.log(email, fname, lname, gender, age, phone);
+		$("#EditUserModal input[name='fname']").val(fname);
+		$("#EditUserModal input[name='lname']").val(lname);
+		if (gender)
+			$('#EditUserModal #Nam').prop("checked", true); //Search checked input radio jquery
+		else
+			$('#EditUserModal #Nu').prop("checked", true);
+		$("#EditUserModal input[name='day']").val(day);
+		$("#EditUserModal input[name='month']").val(month);
+		$("#EditUserModal input[name='year']").val(year);
+		$("#EditUserModal input[name='phone']").val(phone);
+		$("#EditUserModal input[name='img']").val(img);
+		$('#EditUserModal').modal('show');
+	})
+
+
+	$(".btn-delete").click(function (e) {
+		//var phone = $(this).data("phone");
+		//$("#DeleteUserModal input[name='phone']").val(phone);
+		//$("#DeleteUserModal input[name='fname']").val(phone);
+		//$('#DeleteUserModal').modal('show');
+	})
+</script>
+-->
 </body>
 
 </html>

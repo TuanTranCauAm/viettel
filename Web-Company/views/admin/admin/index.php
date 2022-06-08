@@ -127,13 +127,13 @@ require_once('views/admin/content_layouts.php'); ?>
 								<div class="modal-dialog" role="document">
 									<div class="modal-content bg-danger">
 										<div class="modal-header">
-											<h5 class="modal-title">Xóa</h5>
+											<h5 class="modal-title">Cảnh báo!</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
 										<form action="index.php?page=admin&controller=admin&action=delete" method="post">
 											<div class="modal-body">
 												<input type="hidden" name="username" />
-												<p>Bạn chắc chưa ?</p>
+												<p>Xác nhận xóa Admin này</p>
 											</div>
 											<div class="modal-footer">
 												<button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng lại</button>

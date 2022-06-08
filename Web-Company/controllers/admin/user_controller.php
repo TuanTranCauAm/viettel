@@ -20,12 +20,13 @@ class UserController extends BaseController
 	{
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
-		$age = $_POST['age'];
+		$day = $_POST['day'];
+		$month = $_POST['month'];
+		$year = $_POST['year'];
 		$gender = $_POST['gender'];
 		$phone = $_POST['phone'];
-		$email = $_POST['email'];
 		$password = $_POST['password'];
-		echo $fname . $lname . $age . $gender . $phone . $email . $password;
+		//echo $fname . $lname . $age . $gender . $phone . $email . $password;
 		// Photo
 		$target_dir = "public/img/user/";
 		$path = $_FILES['fileToUpload']['name'];
@@ -53,17 +54,18 @@ class UserController extends BaseController
 		}
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Add new
-		$add_new = User::insert($email, $target_file, $fname, $lname, $gender, $age, $phone, $password);
+		$add_new = User::insert($phone, $target_file, $password, $fname, $lname, $day, $month, $year, $gender);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function editInfo()
 	{
-		$email = $_POST['email'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
+		$day = $_POST['day'];
+		$month = $_POST['month'];
+		$year = $_POST['year'];
 		$gender = $_POST['gender'];
-		$age = $_POST['age'];
 		$phone = $_POST['phone'];
 		$urlcurrent = $_POST['img'];
 		// Photo
@@ -94,26 +96,26 @@ class UserController extends BaseController
 		unlink($file_pointer);
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 		// Update
-		$change_info = User::update($email, $target_file, $fname, $lname, $gender, $age, $phone);
+		$change_info = User::update($phone, $target_file, $fname, $lname, $day, $month, $year, $gender);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function editPass()
 	{
-		$email = $_POST['email'];
-		$newpassword = $_POST['new-password'];
-		echo $email . " " . $newpassword .  "\n";
-		$change_pass = User::changePassword_($email, $newpassword);
-		echo "change_pass";
-		header('Location: index.php?page=admin&controller=user&action=index');
+		//$email = $_POST['email'];
+		//$newpassword = $_POST['new-password'];
+		//echo $email . " " . $newpassword .  "\n";
+		//$change_pass = User::changePassword_($email, $newpassword);
+		//echo "change_pass";
+		//header('Location: index.php?page=admin&controller=user&action=index');
 	}
 
 	public function delete()
 	{
-		$email = $_POST['email'];
+		$phone = $_POST['phone'];
 		$urlcurrent = $_POST['img'];
 		unlink($urlcurrent);
-		$delete_user = User::delete($email);
+		$delete_user = User::delete($phone);
 		header('Location: index.php?page=admin&controller=user&action=index');
 	}
 }
