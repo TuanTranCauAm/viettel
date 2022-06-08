@@ -124,8 +124,80 @@ VALUES (2, 500000, 'D500T', 'Có 60GB data tốc độ cao. Chu kỳ 360 ngày.'
 INSERT INTO PRODUCT (type, price, name, description)
 VALUES (2, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
 
-INSERT INTO PRODUCT (type, price, name, description)
-VALUES (3, 70000, 'V70C', 'Có 500MB/ngày data tốc độ cao. Chu kỳ 30 ngày.');
+INSERT INTO PRODUCT (type, price, name, description, content, img)
+VALUES (3, 0, 'Gọi có hình', 
+'Gọi Quốc tế có hình (Video call quốc tế) là dịch vụ giúp khách hàng của Viettel có thể 
+nhìn thấy hình ảnh trực tiếp của người nhận cuộc gọi.',
+'<ul class="list-group list-group-flush">
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Lợi ích khi sử dụng dịch vụ</h3>
+		<p>Chất lượng hình ảnh rõ nét và âm thanh chất lượng cao giúp truyền tải chân thực cảm xúc của người nghe và người gọi. Tiết kiệm chi phí cho khách hàng với phương thức tính cước 6 giây + 1 giây.</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Cách gọi</h3>
+		<p>Quý khách có thể tra mã quốc gia và vùng lãnh thổ được gọi theo quy định của gói cước gọi quốc tế VoIP: [00] + [Mã quốc gia] + [Mã vùng] + [Số điện thoại]</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Giá cước</h3>
+		<p>Cước sử dụng dịch vụ: 8.000 đ/phút (đã bao gồm 10% VAT)</p>
+	</li>
+</ul>',
+"public/img/products/inter-video-call.png");
+
+INSERT INTO PRODUCT (type, price, name, description, content, img)
+VALUES (3, 0, 'Gọi thông thường', 
+'Giữ liên lạc với bạn bè, người thân và đối tác nước ngoài dù bạn ở bất kỳ đâu trên lãnh 
+thổ Việt Nam với giá cước tốt nhất và chất lượng tốt nhất.',
+'<ul class="list-group list-group-flush">
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Đối tượng sử dụng</h3>
+		<p>Khách hàng đang sử dụng dịch vụ di động, dịch vụ cố định của Viettel</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Lợi ích khi sử dụng dịch vụ</h3>
+		<p>Viettel cam kết luôn cung cấp dịch vụ Thoại Quốc tế với chất lượng thoại tốt nhất, đảm bảo trung thực và thời gian kết nối nhanh nhất. Khách hàng có thể thực hiện cuộc gọi thoại quốc tế từ bất kỳ thuê bao điện thoại nào của Viettel với cách quay số đơn giản.</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Đăng ký/Hủy dịch vụ</h3>
+		<p>Quý khách soạn tin nhắn QT OFF hoặc QT ON gửi 133 (miễn phí tin nhắn) để hủy/đăng ký dịch vụ.</p>
+	</li>
+</ul>',
+"public/img/products/inter-call.png");
+
+INSERT INTO PRODUCT (type, price, name, description, content, img)
+VALUES (3, 0, 'MMS quốc tế', 
+'Dịch vụ tin nhắn đa phương tiện quốc tế giúp khách hàng thuê bao di động của Viettel gửi 
+và nhận tin nhắn đa phương tiện (file văn bản, hình ảnh, âm thanh) tới các thuê bao điện thoại 
+(di động, cố định,…) thuộc các quốc gia và vùng lãnh thổ khác trên thế giới.',
+'<ul class="list-group list-group-flush">
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Lợi ích khi sử dụng dịch vụ</h3>
+		<p>Quý khách có thể gửi, chia sẻ tin nhắn văn bản, hình ảnh, video chất lượng đến các thuê bao quốc tế với thời gian nhanh nhất. Quý khách có thể sử dụng dịch vụ MMS quốc tế tại bất kỳ thời điểm nào và bất cứ địa điểm nào, dù đang ở tại Việt Nam hay tại nước ngoài.</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Hướng dẫn sử dụng</h3>
+		<p>Để gửi tin nhắn MMS quốc tế, quý khách làm theo hướng dẫn sau: [+] + [Mã quốc gia] + [Mã vùng] + [Số điện thoại]</p>
+	</li>
+</ul>',
+"public/img/products/MMS.png");
+
+INSERT INTO PRODUCT (type, price, name, description, content, img)
+VALUES (3, 0, 'SMS quốc tế', 
+'Dịch vụ giúp khách hàng gửi tin nhắn (SMS) tới thuê bao di động thuộc các quốc gia và vùng 
+lãnh thổ trên thế giới. Dịch vụ được hỗ trợ kết nối tới tất cả các mạng viễn thông/di động, do 
+đó khách hàng có thể dễ dàng liên lạc với bạn bè, người thân, đối tác ở bất kỳ nơi nào trên thế 
+giới một cách đơn giản và nhanh chóng nhất.',
+'<ul class="list-group list-group-flush">
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Lợi ích khi sử dụng dịch vụ</h3>
+		<p>Tin nhắn quốc tế được gửi đi và đảm bảo tới đích với thời gian nhanh nhất. Quý khách có thể gửi tin nhắn SMS quốc tế tại bất kỳ thời điểm nào và bất cứ địa điểm nào, dù đang ở tại Việt Nam hay tại nước ngoài.</p>
+	</li>
+	<li class="list-group-item">
+		<h3 class="product-detail-title">Hướng dẫn sử dụng</h3>
+		<p>Gửi tin nhắn SMS quốc tế đến thuê bao di động: [+] + [Mã quốc gia] + [Số điện thoại]</p>
+	</li>
+</ul>',
+"public/img/products/SMS.png");
 
 INSERT INTO `NEWS` (status, date, title, description, content)
 VALUES (1, '2021-11-11', 'Ca nhiễm tăng, TP.HCM kiểm soát di biến động dân cư ra sao?', 
