@@ -2370,3 +2370,15 @@ section {
   background-color: #be0129;
   border-color: #be0129;
 }
+
+.product-detail {
+  margin-bottom: 4rem;
+}
+
+.product-detail-title {
+  color: #be0129;
+}
+
+.product-detail-title:hover {
+  color: rgb(241, 39, 39);
+}
