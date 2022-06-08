@@ -17,7 +17,6 @@ class Admin
 
     static function insert($username, $password)
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
         $db = DB::getInstance();
         $req = $db->query("INSERT INTO admin (username, password, createAt, updateAt) VALUES ('$username', '$password', NOW(), NOW());");
         return $req;
@@ -43,7 +42,6 @@ class Admin
     static function changePassword($username, $oldpassword, $newpassword)
     {
         if (Admin::validation($username, $oldpassword)) {
-            $password = password_hash($newpassword, PASSWORD_DEFAULT);
             $db = DB::getInstance();
             $req = $db->query(
                 "UPDATE admin
