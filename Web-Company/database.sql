@@ -94,14 +94,11 @@ CREATE TABLE `COMPANY` (
 
 
 -- Example data 
-INSERT INTO `ADMIN` (username, password) VALUES ('admin', '');
-INSERT INTO `ADMIN` (username, password) VALUES ('username', '');
+
+INSERT INTO `ADMIN` (username, password) VALUES ('admin', 'admin');
 
 INSERT INTO `USER` (phone, password, fname, lname, day, month, year, gender)
-VALUES ('123456789', '123456789', 'TRAN TRUNG', 'TUAN', 1, 1, 1, 'Nam');
-
--- INSERT INTO `USER` (email, fname, lname, gender, age, phone, password)
--- VALUES ('user@hcmut.edu.vn', 'Nguyen Van', 'B', 0, 30, '0123456789', '');
+VALUES ('11', '', 'TRAN TRUNG', 'TUAN', 1, 1, 1, 'Nam');
 
 INSERT INTO PRODUCT (type, price, name, description)
 VALUES (1, 5000, 'ST5K', '500MB sử dụng đến 24h ngày đăng ký (gia hạn tự động)');

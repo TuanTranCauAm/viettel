@@ -22,12 +22,12 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Quản lý Thành viên</h1>
+					<h1>Admin</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Quản lý Thành viên</li>
+						<li class="breadcrumb-item active">Admin</li>
 					</ol>
 				</div>
 			</div>
@@ -63,7 +63,6 @@ require_once('views/admin/content_layouts.php'); ?>
 												</div>
 											</div>
 											<div class="modal-footer">
-												<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
 												<button class="btn btn-primary" type="submit">Thêm mới</button>
 											</div>
 										</form>
@@ -76,8 +75,7 @@ require_once('views/admin/content_layouts.php'); ?>
 									<tr class="text-center">
 										<th>STT</th>
 										<th>Tên đăng nhập</th>
-										<th>Cập nhật lần cuối</th>
-										<th>Thao tác</th>
+										<th>Setting</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -87,7 +85,6 @@ require_once('views/admin/content_layouts.php'); ?>
 										echo "<tr class='text-center'>";
 										echo "<td>" . $index++ . "</td>";
 										echo "<td>" . $admin->username . "</td>";
-										echo "<td>" . $admin->updateAt . "</td>";
 										echo "<td>
 											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-username='$admin->username' data-password='$admin->password'> <i class='fas fa-edit'></i></btn>
 											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-username='$admin->username'> <i class='fas fa-trash'></i></btn>
@@ -130,13 +127,13 @@ require_once('views/admin/content_layouts.php'); ?>
 								<div class="modal-dialog" role="document">
 									<div class="modal-content bg-danger">
 										<div class="modal-header">
-											<h5 class="modal-title">Xóa</h5>
+											<h5 class="modal-title">Cảnh báo!</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
 										<form action="index.php?page=admin&controller=admin&action=delete" method="post">
 											<div class="modal-body">
 												<input type="hidden" name="username" />
-												<p>Bạn chắc chưa ?</p>
+												<p>Xác nhận xóa Admin này</p>
 											</div>
 											<div class="modal-footer">
 												<button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng lại</button>
