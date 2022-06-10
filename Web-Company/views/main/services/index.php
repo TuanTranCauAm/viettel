@@ -15,30 +15,6 @@ include_once('views/main/navbar.php');
 	?>
 	<section id="service" class="services section-bg">
 		<div data-aos="fade-up" data-aos-delay="100">
-			<?php
-			foreach ($products as $product) {
-				echo
-				'<div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-scrollable">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">' . $product->name . '</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<img src="' . $product->img . '" class="card-img-top" alt="...">
-								<h6 class="card-text"><strong>' . $product->description . '</strong></h6>
-								<p><strong>Giá thành: ' . $product->price . '</strong></p>
-								<p>' . $product->content . '</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-							</div>
-						</div>
-					</div>
-				</div>';
-			}
-			?>
 			<div class="row">
 				<div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-10 offset-1 content-service ">
 					<div class="data-pack">
@@ -214,7 +190,7 @@ include_once('views/main/navbar.php');
 						<h3>Xác nhận</h3>
 						<p>Quý khách xác nhận để đăng ký sử dụng.</p>
 						<input type="number" placeholder="Nhập số điện thoại để đăng ký" class="form-control input-popup" />
-						<button type="button" class="btn btn-primary register-btn2 ">Đăng ký ngay</button>
+						<button type="button" class="btn btn-danger register-btn2 ">Đăng ký ngay</button>
 					</div>
 				</div>
 			</div>
