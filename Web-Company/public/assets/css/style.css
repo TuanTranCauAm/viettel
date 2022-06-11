@@ -2371,6 +2371,11 @@ section {
   border-color: #be0129;
 }
 
+.register-btn2:focus, .register-btn2:after {
+  background-color: #be0129;
+  border-color: #be0129;
+}
+
 .product-detail {
   margin-bottom: 4rem;
 }
@@ -2382,3 +2387,8 @@ section {
 .product-detail-title:hover {
   color: rgb(241, 39, 39);
 }
+
+.product-btn:focus {
+  color: #be0129;
+}
+
