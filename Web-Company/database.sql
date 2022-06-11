@@ -2329,3 +2329,16 @@ VALUES (1, 'public/assets/img/allnews/news17.webp', 5,
 	<li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">Lê Công Tráng, Nhân viên bán hàng, Chi nhánh Bưu chính Viettel Đồng Nai</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun"> (</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">TCT Cổ phần Bưu chính Viettel</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">)</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun"> hoàn thành tới 150% kế hoạch được giao; cao hơn 6 lần so với mức bình quân của nhân viên trong đơn vị</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">.</span></span></span></span></span></span></li>
 </ul>
 </blockquote>');
+
+CREATE TABLE `ARCHIVE` (
+  `id` int AUTO_INCREMENT,
+  `title` mediumtext,
+	`date` date DEFAULT NULL,
+  primary key (id)
+);
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Trong 5 năm, Viettel đã tạo ra hơn 1,2 triệu tỉ đồng', '2020-07-02');
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Tiên phong, chủ lực kiến tạo xã hội số, Viettel tiếp tục dẫn đầu ngành về kết quả kinh doanh', '2022-07-01');
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Viettel giành nhiều giải nhất thế giới tại IT World Awards 2022', '2022-05-31');
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Viettel có thêm 2 sáng chế được bảo hộ độc quyền tại Mỹ', '2022-05-26');
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Thu phí không dừng ePass phát triển nhanh, đạt 1 triệu khách hàng', '2022-01-31');
+INSERT INTO `ARCHIVE` (title, date) VALUES ('Giữ vững ngôi vị số 1 về bằng sáng chế được bảo hộ độc quyền tại Hoa Kỳ', '2022-01-31');

@@ -1,6 +1,6 @@
 <?php
 require_once('controllers/main/base_controller.php');
-
+require_once('models/archive.php');
 class ArchiveController extends BaseController
 {
 	function __construct()
@@ -10,6 +10,8 @@ class ArchiveController extends BaseController
 
 	public function index()
 	{
-		$this->render('index');
+		$archives = Archive::getAll();
+		$data = array('archives' => $archives);
+		$this->render('index', $data);
 	}
 }
