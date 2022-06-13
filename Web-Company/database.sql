@@ -65,15 +65,12 @@ CREATE TABLE `COMMENT` (
   `approved` BOOLEAN,
   `content` varchar(10000),
   `news_id` int,
-  `user_id` varchar(255),
-  `parent` int DEFAULT NULL,
+  `user_id` varchar(10),
+  `deleted` BOOLEAN DEFAULT 0,
   primary key (id),
-  foreign key(news_id) references NEWS(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(news_id) references ALLNEWS(id) ON DELETE CASCADE ON UPDATE CASCADE,
   foreign key(user_id) references USER(phone) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-ALTER TABLE `COMMENT`
-ADD foreign key (parent) references COMMENT(id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 CREATE TABLE `ADMIN` (
   `username` varchar(255),
@@ -99,6 +96,8 @@ INSERT INTO `ADMIN` (username, password) VALUES ('admin', 'admin');
 
 INSERT INTO `USER` (phone, password, fname, lname, day, month, year, gender)
 VALUES ('11', '', 'TRAN TRUNG', 'TUAN', 1, 1, 1, 'Nam');
+INSERT INTO `USER` (phone, password, fname, lname, day, month, year, gender)
+VALUES ('22', '', 'TRINH', 'TUAN', 1, 1, 1, 'Nam');
 
 INSERT INTO PRODUCT (type, price, name, description)
 VALUES (1, 5000, 'ST5K', '500MB sử dụng đến 24h ngày đăng ký (gia hạn tự động)');
@@ -216,13 +215,6 @@ Theo thống kê, trong tổng số ca F0 hiện tại có khoảng 70% trườn
 Hướng dẫn lần này quy định rõ hơn về đối tượng được chăm sóc tại nhà khi đảm bảo đủ 2 điều kiện bao gồm không triệu chứng hoặc triệu chứng nhẹ (không có suy hô hấp SpO2 lớn hơn hoặc bằng 96% khi thở khí trời, nhịp thở bằng hoặc dưới 20 lần/phút). Chỉ những F0 có độ tuổi từ 1 - 50 tuổi, không có bệnh nền, không đang mang thai, không béo phì mới được cách ly ở nhà.
 Ngoài ra quy định này chỉ cho phép một số trường hợp không thỏa các điều kiện nêu trên có thể xem xét cách ly ở nhà nếu có bệnh nền ổn định, bảo đảm tiêm đủ 2 mũi vắc xin hoặc sau 14 ngày kể từ ngày tiêm mũi đầu tiên.
 TP Thủ Đức (TP.HCM) là một trong các địa phương được ghi nhận có số ca mắc tăng nhanh gần đây. Ông Nguyễn Văn Chức - giám đốc Trung tâm Y tế TP Thủ Đức - cho biết để "đánh chặn từ xa", ngoài 32 trạm y tế cố định, các trạm y tế lưu động, các phường triển khai tổ y tế lưu động đến từng khu phố (trước đây là phường) để kịp thời xử lý các ca F0 chuyển nặng. "Tổ lưu động của từng khu phố khá đông, bao gồm đủ các ban ngành từ y tế, đoàn thanh niên, dân quân, giáo dục, thành ra việc phản ứng và tiếp cận sẽ được gần người dân hơn" - ông Chức nói.');
-
--- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
--- VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
--- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
--- VALUES (1, 'admin@hcmut.edu.vn', '2021-12-12', 1, 'Bất ngờ quá');
--- INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
--- VALUES (2, 'user@hcmut.edu.vn', '2021-12-12', 0, 'Không thể tin được');
 
 INSERT INTO `COMPANY` (name, address)
 VALUES ('Chi nhánh TPHCM', '268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM');
@@ -2329,6 +2321,15 @@ VALUES (1, 'public/assets/img/allnews/news17.webp', 5,
 	<li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">Lê Công Tráng, Nhân viên bán hàng, Chi nhánh Bưu chính Viettel Đồng Nai</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun"> (</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">TCT Cổ phần Bưu chính Viettel</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">)</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun"> hoàn thành tới 150% kế hoạch được giao; cao hơn 6 lần so với mức bình quân của nhân viên trong đơn vị</span></span></span></span><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black"><span style="font-size:10.0pt"><span style="font-family:Sarabun">.</span></span></span></span></span></span></li>
 </ul>
 </blockquote>');
+
+INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+VALUES (16, '11', '2022-04-12', 1, 'Bất ngờ quá');
+INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+VALUES (15, '11', '2022-05-14', 1, 'Bất ngờ quá');
+INSERT INTO `COMMENT` (news_id, user_id, date, approved, content)
+VALUES (16, '22', '2022-06-15', 0, 'Không thể tin được');
+INSERT INTO `COMMENT` (news_id, user_id, date, approved, content, deleted)
+VALUES (16, '22', '2022-06-16', 0, 'Deleted', 1);
 
 CREATE TABLE `ARCHIVE` (
   `id` int AUTO_INCREMENT,

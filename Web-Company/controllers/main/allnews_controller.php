@@ -59,7 +59,29 @@ class AllnewsController extends BaseController
 
         $recentnews = Newsarticle::getRecentnews($news->id, $news->date, 6); // get 6 recent news
 
-        $data = array('news' => $news, 'recentnews' => $recentnews);
+        $comments = Newsarticle::getComments($newsid);
+
+        $data = array('news' => $news, 'recentnews' => $recentnews, 'comments' => $comments);
         $this->render('news', $data);
+    }
+
+    public function comment()
+    {
+        if (session_id() == "")
+            session_start();
+        if (!isset($_SESSION["guest"])){
+            header('Location: index.php?page=main&controller=login&action=index');
+        }
+
+        if (isset($_POST['newsid'])) {
+            $newsid = $_POST['newsid'];
+        } else { // not given id
+            header('Location: index.php?page=main&controller=allnews&action=index'); // redirect to index page
+        }
+
+        $commentcontent = $_POST['commentcontent'];
+
+        Newsarticle::insertComment($newsid, $commentcontent);
+        header('Location: index.php?page=main&controller=allnews&action=news&id=' . $newsid);
     }
 }
