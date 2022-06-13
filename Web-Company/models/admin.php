@@ -32,9 +32,10 @@ class Admin
     static function validation($username, $password)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM admin WHERE username = '$username'");
-        if ($password == $req->fetch_assoc()['password'])
-            return true;
+        $req = $db->query("SELECT * FROM admin WHERE username = '$username' AND password = '$password'");
+        if($req-> num_rows > 0){
+        //if ($password == $req->fetch_assoc()['password'])
+            return true;}
         else
             return false;
     }
