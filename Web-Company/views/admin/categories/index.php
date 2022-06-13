@@ -11,15 +11,13 @@ if (!isset($_SESSION["user"])) {
 require_once('views/admin/header.php'); ?>
 
 <!-- Add CSS -->
-<link rel='stylesheet' href='public/js/news/index.css' type='text/css'/>
+<link rel='stylesheet' href='public/js/categories/index.css' type='text/css'/>
 
 <?php
 require_once('views/admin/content_layouts.php'); ?>
-
-<!-- Code -->
 <div class="content-wrapper">
 	<!-- Add Content -->
-	<h1 style="margin-left: 10px">Bài viết</h1> 
+	<h1 style="margin-left: 10px">Thể loại bài viết</h1> 
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -32,7 +30,7 @@ require_once('views/admin/content_layouts.php'); ?>
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Thêm mới bài viết</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h5 class="modal-title">Thêm mới thể loại</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form id="form-add-student" action="index.php?page=admin&controller=news&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
@@ -139,7 +137,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 </div>
                                                 <form action="index.php?page=admin&controller=news&action=delete" method="post">
                                                     <div class="modal-body"><input type="hidden" name="id" />
-                                                        <p>Bạn có chắc chắn xóa bài viết này</p>
+                                                        <p>Bạn có chắc chắn xóa thể loại này</p>
                                                     </div>
                                                     <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
                                                 </form>
@@ -150,7 +148,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content bg-danger">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Hiện hay ẩn bài viết</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h5 class="modal-title">Hiện hay ẩn thể loại</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <form action="index.php?page=admin&controller=news&action=hide" method="post">
                                                     <div class="modal-body">
@@ -181,7 +179,7 @@ require_once('views/admin/content_layouts.php'); ?>
 require_once('views/admin/footer.php'); ?>
 
 <!-- Add Javascripts -->
-<script src="public/js/news/index.js"></script>
+<script src="public/js/categories/index.js"></script>
 
 </body>
 

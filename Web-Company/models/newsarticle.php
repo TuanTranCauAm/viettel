@@ -92,6 +92,63 @@ class Newsarticle
         return $req;
     }
 
+    static function update($id, $title, $description, $content, $thumbnail, $categoryid) {
+        if (!isset($id) || !isset($title) || !isset($description) || !isset($content) || !isset($thumbnail) || !isset($categoryid)) { // check field
+            return false;
+        }
+        // check category
+        $categories = Newsarticle::getCategories();
+        $category = null;
+        for ($i = 0; $i < count($categories); $i++) {
+            if ($categories[$i]["id"] == $categoryid) {
+                $category = $categories[$i];
+                break;
+            }
+        }
+        if ($category == null) {
+            return false;
+        }
+
+        // do the update
+        $db = DB::getInstance();
+        $sql = "UPDATE ALLNEWS SET title='$title', description='$description', content='$content', thumbnail='$thumbnail', category_id='$categoryid' WHERE id='$id'";
+        $req = $db->query($sql);
+        if (!$req) {
+            return false;
+        }
+        return $db->affected_rows > 0;
+    }
+
+    static function hide($id, $status) {
+        if (!isset($id) || !isset($status)) {
+            return false;
+        }
+        if ($status != 0 && $status != 1) {
+            return false;
+        }
+        $status = 1 - $status;
+        $db = DB::getInstance();
+        $sql = "UPDATE ALLNEWS SET status=$status WHERE id='$id'";
+        $req = $db->query($sql);
+        if (!$req) {
+            return false;
+        }
+        return $db->affected_rows > 0;
+    }
+
+    static function delete($id) {
+        if (!isset($id)) {
+            return false;
+        }
+        $db = DB::getInstance();
+        $sql = "DELETE FROM ALLNEWS WHERE id='$id'";
+        $req = $db->query($sql);
+        if (!$req) {
+            return false;
+        }
+        return $db->affected_rows > 0;
+    }
+
     static function getArticle($article_id)
     {
         $db = DB::getInstance();
@@ -132,8 +189,8 @@ class Newsarticle
         $numnewsmidEarlier = $numnews - $numnewsmidLater;
         // get the news from database
         $db = DB::getInstance();
-        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE('$time') and ALLNEWS.id != $id ORDER BY date ASC LIMIT $numnews");
-        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE('$time') ORDER BY date DESC LIMIT $numnews");
+        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE('$time') and ALLNEWS.id != $id ORDER BY date ASC LIMIT $numnews");
+        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE('$time') ORDER BY date DESC LIMIT $numnews");
 
         if (!$req1 or !$req2) // query error
             return null;
