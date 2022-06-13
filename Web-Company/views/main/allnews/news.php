@@ -59,7 +59,7 @@
         }
     ?>
     <section id="news-recent" class="news-recent">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
         <h2 class="pl-3 text-black news-recent-title news-recent-md-title">Tin gần đây</h2>
         <div class="row">
           <?php
