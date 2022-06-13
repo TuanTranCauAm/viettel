@@ -219,7 +219,7 @@ TP Thủ Đức (TP.HCM) là một trong các địa phương được ghi nhậ
 INSERT INTO `COMPANY` (name, address)
 VALUES ('Chi nhánh TPHCM', '268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM');
 INSERT INTO `COMPANY` (name, address)
-VALUES ('Chi nhánh Hà Nội', 'Hà Nội');
+VALUES ('Chi nhánh Bình Dương', 'Đông Hòa, Dĩ An, Bình Dương');
 
 INSERT INTO `CATEGORYNEWS` (name)
 VALUES ('Hoạt động kinh doanh');

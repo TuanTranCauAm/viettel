@@ -19,7 +19,7 @@ include_once('views/main/navbar.php');
 
     <!-- ======= Contact Section ======= -->
     <div class="map-section">
-      <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7839.393507316623!2d106.743711!3d10.757838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb98f29e0479d526a!2sVNG%20Corporation!5e0!3m2!1sen!2sus!4v1637860473994!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
+      <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5730210704824!2d106.78167181471908!3d10.843951392275722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752711f4b1dbe1%3A0x64472d8e226c6858!2zQ-G7rWEgSMOgbmcgVmlldHRlbA!5e0!3m2!1svi!2s!4v1655131261634!5m2!1svi!2s" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <section id="contact" class="contact">
