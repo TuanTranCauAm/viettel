@@ -1,6 +1,7 @@
 <?php
 require_once('controllers/admin/base_controller.php');
 require_once('models/news.php');
+require_once('models/newsarticle.php');
 
 
 class NewsController extends BaseController
@@ -12,7 +13,7 @@ class NewsController extends BaseController
 
 	public function index()
 	{
-        $news = News::getAll();
+        $news = Newsarticle::getAll();
         $data = array('news' => $news);
         $this->render('index', $data);
 	}

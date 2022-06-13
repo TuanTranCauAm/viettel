@@ -48,6 +48,26 @@ class Newsarticle
         return $listnews;
     }
 
+    static function getAll() {
+        $db = DB::getInstance();
+        $sql = "SELECT * FROM ALLNEWS";
+        $req = $db->query($sql);
+        $listnews = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $news) {
+            $listnews[] = new Newsarticle(
+                $news["id"],
+                $news["status"],
+                $news["thumbnail"],
+                $news["category_id"],
+                $news["title"],
+                $news["description"],
+                $news["date"],
+                $news["content"]
+            );
+        }
+        return $listnews;
+    }
+
     static function getArticle($article_id)
     {
         $db = DB::getInstance();

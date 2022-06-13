@@ -18,19 +18,21 @@ $('#TAB-news').DataTable({
         var title = $("#form-add-student input[name='title']").val();
         var description = $("#form-add-student textarea[name='description']").val();
         var content = $("#form-add-student textarea[name='content']").val();
-        if (title == "" || description == "" || content == "" ) {
+        var thumbnail = $("#form-add-student input[name='thumbnail']").val();
+        var categoryid = $("#form-add-student input[name='categoryid']").val();
+        if (title == "" || description == "" || content == "" || thumbnail == "" || categoryid == "") {
           $(document).Toasts("create", {
             class: "bg-danger",
-            title: "Quản lý",
-            subtitle: "Library",
+            title: "Thêm",
+            subtitle: "Bài viết",
             body: "Bạn phải nhập đầy đủ thông tin",
           });
         } else {
           form.unbind("submit").submit();
             $(document).Toasts("create", {
                 class: "bg-success",
-                title: "Quản lý",
-                subtitle: "Library",
+                title: "Thêm",
+                subtitle: "Bài viết",
                 body: "Bạn Thêm mới thành công",
               });
               form.unbind("submit").submit();
@@ -38,8 +40,6 @@ $('#TAB-news').DataTable({
               }, 1000);
     
         }
-      
-        //     if (data.status == "FOUND") alert("Đã tồn tại mã số sinh viên này!");
       });
 $(".btn-edit").click(function (e) {
     var id = $(this).data("id");
@@ -47,11 +47,15 @@ $(".btn-edit").click(function (e) {
     var description = $(this).data("description");
     var content = $(this).data("content");
     var title = $(this).data("title");
-    // console.log(title);
+    var thumbnail = $(this).data("thumbnail");
+    var categoryid = $(this).data("categoryid");
+    console.log($(this).data());
     $("#EditStudentModal input[name='id']").val(id);
     $("#EditStudentModal textarea[name='description']").val(description);
     $("#EditStudentModal textarea[name='content']").val(content);
     $("#EditStudentModal input[name='title']").val(title);
+    $("#EditStudentModal input[name='thumbnail']").val(thumbnail);
+    $("#EditStudentModal input[name='categoryid']").val(categoryid);
     $('#EditStudentModal').modal('show');
 });
 

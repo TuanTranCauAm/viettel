@@ -35,9 +35,11 @@ require_once('views/admin/content_layouts.php'); ?>
                                     </div>
                                     <form id="form-add-student" action="index.php?page=admin&controller=news&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
-                                           <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" placeholder="Mô tả" name="description" rows="5"></textarea></div>
                                             <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" placeholder="Nội dung" name="content" rows="10"></textarea></div>
                                             <div class="form-group"><label>Tiêu đề</label><input class="form-control" type="text" placeholder="Tiêu đề" name="title" /></div>
+                                            <div class="form-group"><label>Thumbnail</label><input class="form-control" type="text" placeholder="Thubnail" name="thumbnail" /></div>
+                                            <div class="form-group"><label>Category ID</label><input class="form-control" type="text" placeholder="Category ID" name="categoryid" /></div>
+                                           <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" placeholder="Mô tả" name="description" rows="5"></textarea></div>
                                         </div>
                                         <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary" type="submit">Thêm mới</button></div>
                                     </form>
@@ -48,12 +50,14 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <thead>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
-                                            <th style="width:150px;" scope="col">Trạng thái</th>
+                                            <th style="width:150px;" scope="col">Thao tác</th>
+                                            <th style="width:50px;" scope="col">Trạng thái</th>
                                             <th scope="col">Ngày  </th>
+                                            <th scope="col">Tiêu đề</th>
+                                            <th style="width:150px;" scope="col">Thumbnail</th>
+                                            <th scope="col">Category ID</th>
                                             <th scope="col">Mô tả</th>
                                             <th scope="col">Nội dung</th>
-                                            <th scope="col">Tiêu đề</th>
-                                            <th style="width:150px;" scope="col">Thao tác</th>
                                         </tr>
                                     </thead>
                                    
@@ -75,6 +79,11 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <td class=\"text-center\">"
                                                         . $index. 
                                                     "</td>
+                                                    <td style=\"width:150px;\" class=\"text-center\"> ".
+                                                    $button . "
+                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$new->id'  data-description='$new->description' data-content='$new->content' data-title='$new->title' data-thumbnail='$new->thumbnail' data-categoryid='$new->category'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
+                                                    </td>
                                                     <td class=\"text-center\">
                                                        ".  $status ."
                                                     </td>
@@ -82,19 +91,20 @@ require_once('views/admin/content_layouts.php'); ?>
                                                       ".  $new->date."
                                                     </td>   
                                                     <td>
+                                                       " .$new->title."
+                                                    </td>
+                                                    <td>
+                                                       <img src=\"" . $new->thumbnail ."\" class=\"w-100\">
+                                                    </td>
+                                                    <td>
+                                                       " . $new->category ."
+                                                    </td>
+                                                    <td>
                                                      " .  $new->description."
                                                     </td> 
                                                     <td>
                                                        " .$new->content."
                                                     </td>   
-                                                    <td>
-                                                       " .$new->title."
-                                                    </td    >       
-                                                    <td style=\"width:150px;\" class=\"text-center\"> ".
-                                                    $button . "
-                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$new->id'  data-description='$new->description' data-content='$new->content' data-title='$new->title' > <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
-                                                  </td>                                                                                                                                                                                       
                                                 </tr>";
                                                 $index++;
                                             }
@@ -108,10 +118,12 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 </div>
                                                 <form action="index.php?page=admin&controller=news&action=edit" enctype="multipart/form-data" method="post">
                                                     <div class="modal-body">
-                                                         <div  class="col-12"><label>ID</label> <input class="form-control" type="text" placeholder="Name" name="id"  readonly/></div>                  
+                                                         <div  class="col-12"><label>ID</label> <input class="form-control" type="text" placeholder="ID" name="id"  readonly/></div>                  
+                                                         <div  class="form-group"><label>Tiêu đề </label><input class="form-control" type="text"  name="title" /></div>
                                                         <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
+                                                        <div  class="form-group"><label>Thumbnail</label><input class="form-control" type="text"  name="thumbnail" /></div>
+                                                        <div  class="form-group"><label>Category ID</label><input class="form-control" type="text"  name="categoryid" /></div>
                                                         <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" name="content" rows="10"></textarea></div>
-                                                        <div  class="form-group"><label>Tiêu đề </label><input class="form-control" type="text"  name="title" /></div>
                                                     </div>
                                                     <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary" type="submit">Chỉnh sửa</button></div>
                                                 </form>
