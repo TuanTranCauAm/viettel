@@ -189,8 +189,8 @@ class Newsarticle
         $numnewsmidEarlier = $numnews - $numnewsmidLater;
         // get the news from database
         $db = DB::getInstance();
-        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE('$time') and ALLNEWS.id != $id ORDER BY date ASC LIMIT $numnews");
-        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE('$time') ORDER BY date DESC LIMIT $numnews");
+        $req1 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and date >= DATE('$time') and ALLNEWS.id != $id ORDER BY date ASC LIMIT $numnews");
+        $req2 = $db->query("SELECT ALLNEWS.id as id, status, thumbnail, name as category, title, description, date FROM ALLNEWS, CATEGORYNEWS WHERE status=1 and ALLNEWS.category_id=CATEGORYNEWS.id and date < DATE('$time') ORDER BY date DESC LIMIT $numnews");
 
         if (!$req1 or !$req2) // query error
             return null;
