@@ -1,7 +1,8 @@
 ines (156 sloc)  13 KB
   
 <?php
-session_start();
+if (session_id() == "")
+    session_start();
 if (!isset($_SESSION["user"])) {
 	header("Location: index.php?page=admin&controller=login&action=index");
 }
@@ -68,10 +69,10 @@ require_once('views/admin/content_layouts.php'); ?>
 
                                             foreach ($news as $new) {  
                                                       $status = ($new->status)? 'Post' : 'Hide' ;   
-                                                      $button = ($new->status)? "<button class=\"btn-hide btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-x-lg\" viewBox=\"0 0 16 16\">
+                                                      $button = ($new->status)? "<button class=\"btn-hide btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id=\"$new->id\" data-status=\"$new->status\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-x-lg\" viewBox=\"0 0 16 16\">
                                                       <path fill-rule=\"evenodd\" d=\"M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z\"/>
                                                       <path fill-rule=\"evenodd\" d=\"M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z\"/>
-                                                      </svg></button>" : "<button class=\"btn-hide btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' > <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-check-lg\" viewBox=\"0 0 16 16\">
+                                                      </svg></button>" : "<button class=\"btn-hide btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id=\"$new->id\" data-status=\"$new->status\" > <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-check-lg\" viewBox=\"0 0 16 16\">
                                                       <path d=\"M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z\"/>
                                                     </svg></button>";               
                                                 echo 
@@ -116,7 +117,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Chỉnh sửa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <form action="index.php?page=admin&controller=news&action=edit" enctype="multipart/form-data" method="post">
+                                                <form id="form-edit-post" action="index.php?page=admin&controller=news&action=edit" enctype="multipart/form-data" method="post">
                                                     <div class="modal-body">
                                                          <div  class="col-12"><label>ID</label> <input class="form-control" type="text" placeholder="ID" name="id"  readonly/></div>                  
                                                          <div  class="form-group"><label>Tiêu đề </label><input class="form-control" type="text"  name="title" /></div>
@@ -152,7 +153,8 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     <h5 class="modal-title">Hiện hay ẩn bài viết</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <form action="index.php?page=admin&controller=news&action=hide" method="post">
-                                                    <div class="modal-body"><input type="hidden" name="id" />
+                                                    <div class="modal-body">
+                                                        <input type="hidden" name="id" /><input type="hidden" name="status" />
                                                         <p>Bạn đã chắc chắn?</p>
                                                     </div>
                                                     <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Cập nhật</button></div>
