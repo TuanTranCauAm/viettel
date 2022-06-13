@@ -1,6 +1,5 @@
 <?php
 require_once('controllers/admin/base_controller.php');
-require_once('models/news.php');
 require_once('models/newsarticle.php');
 
 
