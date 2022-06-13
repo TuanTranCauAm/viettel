@@ -44,6 +44,7 @@ $('#TAB-news').DataTable({
                   autohide: true,
                   delay: 3000,
                 });
+                form[0].reset();
               }
               else {
                 $(document).Toasts("create", {
@@ -55,7 +56,6 @@ $('#TAB-news').DataTable({
                   delay: 3000,
                 });
               }
-              form[0].reset();
             }
            })
           // form.unbind("submit").submit();
