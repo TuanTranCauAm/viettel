@@ -26,18 +26,42 @@ $('#TAB-news').DataTable({
             title: "Thêm",
             subtitle: "Bài viết",
             body: "Bạn phải nhập đầy đủ thông tin",
+            autohide: true,
+            delay: 3000,
           });
         } else {
-          form.unbind("submit").submit();
-            $(document).Toasts("create", {
-                class: "bg-success",
-                title: "Thêm",
-                subtitle: "Bài viết",
-                body: "Bạn Thêm mới thành công",
-              });
-              form.unbind("submit").submit();
-              setTimeout(function () {
-              }, 1000);
+          $.ajax({
+            type: "POST",
+             url: form.attr("action"),
+             data: form.serialize(),
+             success: function($data) {
+               if ($data == "success") {
+                $(document).Toasts("create", {
+                  class: "bg-success",
+                  title: "Thêm",
+                  subtitle: "Bài viết",
+                  body: "Thêm mới thành công. Refresh để xem thay đổi.",
+                  autohide: true,
+                  delay: 3000,
+                });
+              }
+              else {
+                $(document).Toasts("create", {
+                  class: "bg-danger",
+                  title: "Thêm",
+                  subtitle: "Bài viết",
+                  body: "Thêm mới thất bại. Có lẽ sai category ID?.",
+                  autohide: true,
+                  delay: 3000,
+                });
+              }
+              form[0].reset();
+            }
+           })
+          // form.unbind("submit").submit();
+              // form.unbind("submit").submit();
+              // setTimeout(function () {
+              // }, 1000);
     
         }
       });
@@ -49,7 +73,6 @@ $(".btn-edit").click(function (e) {
     var title = $(this).data("title");
     var thumbnail = $(this).data("thumbnail");
     var categoryid = $(this).data("categoryid");
-    console.log($(this).data());
     $("#EditStudentModal input[name='id']").val(id);
     $("#EditStudentModal textarea[name='description']").val(description);
     $("#EditStudentModal textarea[name='content']").val(content);

@@ -18,17 +18,28 @@ class NewsController extends BaseController
         $this->render('index', $data);
 	}
     public function add(){
+        session_start();
+        if (!isset($_SESSION["user"])){
+            header('Location: index.php?page=main&controller=login&action=index');
+        }
         $description = $_POST['description'];
         $content = $_POST['content'];
         $title = $_POST['title'];
-        News::insert($title, $description, $content);
-        header('Location: index.php?page=admin&controller=news&action=index');
+        $thumbnail = $_POST['thumbnail'];
+        $categoryid = $_POST['categoryid'];
+        $res = Newsarticle::insert($title, $description, $content, $thumbnail, $categoryid);
+        if ($res)
+            echo "success";
+        else
+            echo "fail";
     }
     public function edit(){
         $id = $_POST['id'];
         $description = $_POST['description'];
         $content = $_POST['content'];
         $title = $_POST['title'];
+        $thumbnail = $_POST['thumbnail'];
+        $categoryid = $_POST['categoryid'];
         News::update($id,$title, $description, $content);
         header('Location: index.php?page=admin&controller=news&action=index');
     }

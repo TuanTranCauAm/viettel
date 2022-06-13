@@ -10,7 +10,7 @@ if (!isset($_SESSION["user"])) {
 require_once('views/admin/header.php'); ?>
 
 <!-- Add CSS -->
-
+<link rel='stylesheet' href='public/js/news/index.css' type='text/css'/>
 
 <?php
 require_once('views/admin/content_layouts.php'); ?>

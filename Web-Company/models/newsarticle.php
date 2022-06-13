@@ -68,6 +68,30 @@ class Newsarticle
         return $listnews;
     }
 
+    static function insert($title, $description, $content, $thumbnail, $categoryid) {
+        if (!isset($title) || !isset($description) || !isset($content) || !isset($thumbnail) || !isset($categoryid)) { // check field
+            return false;
+        }
+        // check category
+        $categories = Newsarticle::getCategories();
+        $category = null;
+        for ($i = 0; $i < count($categories); $i++) {
+            if ($categories[$i]["id"] == $categoryid) {
+                $category = $categories[$i];
+                break;
+            }
+        }
+        if ($category == null) {
+            return false;
+        }
+
+        // do the insertion
+        $db = DB::getInstance();
+        $sql = "INSERT INTO ALLNEWS (status, title, description, content, thumbnail, category_id, date) VALUES (1, '$title', '$description', '$content', '$thumbnail', '$categoryid', NOW())";
+        $req = $db->query($sql);
+        return $req;
+    }
+
     static function getArticle($article_id)
     {
         $db = DB::getInstance();
