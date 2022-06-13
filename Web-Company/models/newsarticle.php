@@ -110,7 +110,10 @@ class Newsarticle
                 $numnewsLater += $numnewsmidEarlier - $numnewsEarlier;
             }
         } else {
-            $numnewsEarlier += $numnewsmidLater - $numnewsLater;
+            if ($numnewsEarlier >= $numnewsmidEarlier) {
+                $numnewsEarlier = $numnewsmidEarlier;
+                $numnewsEarlier += $numnewsmidLater - $numnewsLater;
+            }
         }
 
         // create list of news
