@@ -319,7 +319,7 @@ require_once('views/admin/content_layouts.php'); ?>
 										echo "<td><img style=\"width: 200px; height:300px;\" src='$user->profile_photo'></td>";
 										echo "<td>" . $user->fname . "</td>";
 										echo "<td>" . $user->lname . "</td>";
-										echo "<td>" . (($user->gender == 0) ? "Nam" : "Nữ") . "</td>";
+										echo "<td>" . $user->gender . "</td>";
 										echo "<td>" . $user->day . '/' . $user->month . '/' . $user->year ."</td>";
 										echo "<td>" . $user->phone . "</td>";
 										echo "<td>
