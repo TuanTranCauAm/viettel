@@ -40,6 +40,81 @@
       </div>
     </section>
     
+    <?php 
+    if (session_id() == '' || !isset($_SESSION)) {
+      // session isn't started
+      session_start();
+    }
+    ?>
+    <section id="news-comments" class="news-comments">
+      <div class="container">
+        <h2 class="pl-3 text-black news-recent-title news-recent-md-title">Bình luận</h2>
+        <div class="row">
+        <?php
+        foreach ($comments as $comment) {
+          echo '
+            <div class="col-12">
+              <div class="card m-3 d-flex flex-column h-100">
+                <div class="card-body">
+                  <h4 class="card-title my-3 text-uppercase font-weight-bold">' . $comment->fname . ' ' . $comment->lname . '</h4>
+                  <p class="card-text news-comments-content">';
+                  if ($comment->deleted) {
+                    echo '
+                      <em>Bình luận đã bị xóa</em>';
+                  }
+                  else {
+                    echo $comment->content;
+                  }
+                  echo '</p>
+                  <small class="card-footer text-muted bg-transparent border-top-0 pl-0">';
+                  if ($comment->date != null) {
+                    $commentdate = strtotime($comment->date);
+                    echo '
+                      Ngày ' . date("j", $commentdate) .' tháng ' . date("n", $commentdate) . ' năm ' . date("Y", $commentdate);
+                  }
+                echo '
+                  </small>';
+                if (((isset($_SESSION['guest']) && $_SESSION['guest'] == $comment->phone)) && !$comment->deleted) {
+                echo '
+                  <div>
+                    <a href="index.php?page=main&controller=news&action=deletecomment&id=' . strval($comment->phone) . '" class="btn btn-danger ml-0">Xóa</a>
+                  </div>';
+                }
+                echo '
+                </div>
+              </div>
+            </div>';
+            }
+        ?>
+        </div>
+        <?php
+        echo '
+        <div class="row">
+          <div class="col-12">
+            <div class="card m-3 d-flex flex-column h-100">
+              <div class="card-body">';
+              if (isset($_SESSION['guest'])) {
+              echo '
+                <h4 class="card-title my-3 text-uppercase font-weight-bold">Để lại bình luận</h4>
+                <form action="index.php?page=main&controller=allnews&action=comment" method="post">
+                  <div class="form-group">
+                    <input type="hidden" name="newsid" value="' . $news->id . '">
+                    <input type="text" class="form-control" id="commentcontent" name="commentcontent" placeholder="Tin này hay quá!" required>
+                    <input type="submit" value="Gửi" class="btn btn-danger">
+                  </div>
+                </form>';
+              }
+              else {
+              echo '
+                <h4 class="card-title my-3 text-uppercase font-weight-bold">Đăng nhập để bình luận</h4>';
+              }
+              echo '</div>
+            </div>
+          </div>
+        </div>';
+        ?>
+    </section>
+    
     <?php
         function getNewscontent_cardBody($news) {
             $newsdate = strtotime($news->date);
@@ -88,74 +163,6 @@
           }?>
         </div>
       </div>
-    </section>
-    
-    <?php 
-    if (session_id() == '' || !isset($_SESSION)) {
-      // session isn't started
-      session_start();
-    }
-    ?>
-    <section id="news-comments" class="news-comments">
-      <div class="container">
-        <h2 class="pl-3 text-black news-recent-title news-recent-md-title">Bình luận</h2>
-        <div class="row">
-        <?php
-        foreach ($comments as $comment) {
-          echo '
-            <div class="col-12">
-              <div class="card m-3 d-flex flex-column h-100">
-                <div class="card-body">
-                  <h4 class="card-title my-3 text-uppercase font-weight-bold">' . $comment->fname . ' ' . $comment->lname . '</h4>
-                  <p class="card-text news-comments-content">';
-                  if ($comment->deleted) {
-                    echo '
-                      <em>Bình luận đã bị xóa</em>';
-                  }
-                  else {
-                    echo $comment->content;
-                  }
-                  echo '</p>
-                  <small class="card-footer text-muted bg-transparent border-top-0 pl-0">';
-                  if ($comment->date != null) {
-                    $commentdate = strtotime($comment->date);
-                    echo '
-                      Ngày ' . date("j", $commentdate) .' tháng ' . date("n", $commentdate) . ' năm ' . date("Y", $commentdate);
-                  }
-                echo '
-                  </small>
-                </div>
-              </div>
-            </div>';
-            }
-        ?>
-        </div>
-        <?php
-        echo '
-        <div class="row">
-          <div class="col-12">
-            <div class="card m-3 d-flex flex-column h-100">
-              <div class="card-body">';
-              if (isset($_SESSION['guest'])) {
-              echo '
-                <h4 class="card-title my-3 text-uppercase font-weight-bold">Để lại bình luận</h4>
-                <form action="index.php?page=main&controller=allnews&action=comment" method="post">
-                  <div class="form-group">
-                    <input type="hidden" name="newsid" value="' . $news->id . '">
-                    <input type="text" class="form-control" id="commentcontent" name="commentcontent" placeholder="Tin này hay quá!" required>
-                    <input type="submit" value="Gửi" class="btn btn-danger">
-                  </div>
-                </form>';
-              }
-              else {
-              echo '
-                <h4 class="card-title my-3 text-uppercase font-weight-bold">Đăng nhập để bình luận</h4>';
-              }
-              echo '</div>
-            </div>
-          </div>
-        </div>';
-        ?>
     </section>
   </main>
   <?php
