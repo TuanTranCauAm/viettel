@@ -84,4 +84,27 @@ class AllnewsController extends BaseController
         Newsarticle::insertComment($newsid, $commentcontent);
         header('Location: index.php?page=main&controller=allnews&action=news&id=' . $newsid);
     }
+
+    public function deletecomment()
+    {
+        if (session_id() == "")
+            session_start();
+        if (!isset($_SESSION["guest"])){
+            header('Location: index.php?page=main&controller=login&action=index&err=1');
+        }
+
+        if (isset($_POST['commentid']) and isset($_POST['userid']) and isset($_POST['newsid'])) {
+            $commentid = $_POST['commentid'];
+            $userid = $_POST['userid'];
+            $newsid = $_POST['newsid'];
+        } else { // not given id
+            header('Location: index.php?page=main&controller=allnews&action=index&err=2'); // redirect to index page
+        }
+        if ($_SESSION["guest"] == $userid) {
+            Newsarticle::deleteComment($commentid, $userid);
+            header('Location: index.php?page=main&controller=allnews&action=news&id=' . $newsid);
+        } else {
+            header('Location: index.php?page=main&controller=allnews&action=index&err=3'); // redirect to index page
+        }
+    }
 }

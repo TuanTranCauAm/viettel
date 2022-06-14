@@ -245,10 +245,11 @@ class Newsarticle
     static function getComments($article_id)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT phone, fname, lname, content, date, deleted FROM COMMENT,USER WHERE news_id=$article_id and COMMENT.user_id=USER.phone");
+        $req = $db->query("SELECT id, phone, fname, lname, content, date, deleted FROM COMMENT,USER WHERE news_id=$article_id and COMMENT.user_id=USER.phone");
         $comments = array();
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $comment) {
             $comments[] = new Comment(
+                $comment["id"],
                 $comment["phone"],
                 $comment["fname"],
                 $comment["lname"],
@@ -277,12 +278,31 @@ class Newsarticle
         }
         return $db->affected_rows > 0;
     }
+    static function deleteComment($comment_id, $user_id) {
+        if (session_id() == '') {
+            session_start();
+        }
+        if ($_SESSION['guest'] == null) {
+            return false;
+        }
+        if (!isset($comment_id) || !isset($user_id)) {
+            return false;
+        }
+        $db = DB::getInstance();
+        $sql = "UPDATE COMMENT SET deleted=1 WHERE id=$comment_id and user_id='$user_id'";
+        $req = $db->query($sql);
+        if (!$req) {
+            return false;
+        }
+        return $db->affected_rows > 0;
+    }
 }
 
 class Comment {
-    public $phone, $fname, $lname, $content, $date, $deleted;
-    public function __construct($phone, $fname, $lname, $content, $date, $deleted)
+    public $id, $phone, $fname, $lname, $content, $date, $deleted;
+    public function __construct($id, $phone, $fname, $lname, $content, $date, $deleted)
     {
+        $this->id = $id;
         $this->phone = $phone;
         $this->fname = $fname;
         $this->lname = $lname;

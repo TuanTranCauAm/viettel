@@ -76,9 +76,12 @@
                   </small>';
                 if (((isset($_SESSION['guest']) && $_SESSION['guest'] == $comment->phone)) && !$comment->deleted) {
                 echo '
-                  <div>
-                    <a href="index.php?page=main&controller=news&action=deletecomment&id=' . strval($comment->phone) . '" class="btn btn-danger ml-0">Xóa</a>
-                  </div>';
+                  <form method="post" action="index.php?page=main&controller=allnews&action=deletecomment" id="form-delete-comment">
+                    <input type="hidden" name="newsid" value="' . $news->id . '">
+                    <input type="hidden" name="commentid" value="' . $comment->id . '">
+                    <input type="hidden" name="userid" value="' . $comment->phone . '">
+                    <button type="submit" class="btn btn-danger ml-0">Xóa</a>
+                  </form>';
                 }
                 echo '
                 </div>
@@ -181,4 +184,3 @@ include_once('views/main/footer.php');
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="public/plugins/jquery/jquery.min.js"></script>
-<!-- <script src="public/js/blog/index.js"></script> -->
