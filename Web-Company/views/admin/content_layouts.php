@@ -50,12 +50,6 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
-								<i class="nav-icon fas fa-comments"></i>
-								<p>Bình luận đánh giá</p>
-							</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link" href="index.php?page=admin&controller=products&action=index">
 								<i class="nav-icon fas fa-cube"></i>
 								<p>Quản lý sản phẩm</p>

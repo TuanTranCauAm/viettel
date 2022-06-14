@@ -11,7 +11,6 @@ $controllers = array(
   'members' => ['index'],
   'products' => ['index','add','edit','delete'],
   'news' => ['index','add','edit','delete','hide'],
-  'comments' => ['index','hide','add','edit','delete'],
   'admin' => ['index', 'add', 'edit', 'delete'],
   'user' => ['index', 'add', 'editInfo', 'editPass', 'delete'],
   'company' => ['index', 'add', 'edit', 'delete'],
@@ -19,10 +18,8 @@ $controllers = array(
   
   //Main controller
   'about' => ['index'],
-  'blog' => ['index'],
   'archive' => ['index'],
   'contact' => ['index'],
-  'blog' => ['index', 'comment', 'reply'],
   'services' => ['index','detail'],
   'register' => ['index', 'submit', 'editInfo'],
   'allnews' => ['index', 'news', 'comment', 'deletecomment']
